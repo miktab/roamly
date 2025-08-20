@@ -1,0 +1,90 @@
+[
+  {
+    "productId": 1,
+    "title": "Be Remote Ready",
+    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
+    "price": 2500,
+    "currency": "USD",
+    "duration": "14 days",
+    "category": "Bootcamp",
+    "level": "Beginner to Intermediate",
+    "productCategory": "product",
+    "productType": "RemoteReadyBootcamp",
+    "features": [
+      "Live interactive sessions with Real Digital Nomads",
+      "Resume optimization"
+    ],
+    "image": "/roamly/hero-above-clouds.jpg",
+    "available": true,
+    "rating": 4.9
+  },
+  {
+    "productId": 2,
+    "title": "Digital Nomad Starter Pack",
+    "description": "Everything you need to start your digital nomad journey, including legal frameworks, tax optimization, and location scouting.",
+    "price": 29700,
+    "currency": "USD",
+    "duration": "Self-paced",
+    "category": "Course",
+    "level": "Beginner",
+    "productCategory": "product",
+    "productType": "DigitalNomadCourse",
+    "features": [
+      "Legal framework setup",
+      "Tax optimization strategies",
+      "Location scouting guide",
+      "Banking and finance abroad",
+      "Health insurance guidance",
+      "Community access"
+    ],
+    "image": "/roamly/testimonial-sarah.jpg",
+    "available": false,
+    "rating": 4.7
+  },
+  {
+    "productId": 3,
+    "title": "Remote Income Mastery",
+    "description": "Advanced strategies for creating multiple income streams while traveling. Perfect for experienced remote workers looking to scale.",
+    "price": 79700,
+    "currency": "USD",
+    "duration": "6 weeks",
+    "category": "Masterclass",
+    "level": "Advanced",
+    "productCategory": "product",
+    "productType": "IncomeStreamMasterclass",
+    "features": [
+      "Multiple income stream strategies",
+      "Investment opportunities",
+      "Passive income creation",
+      "Business automation",
+      "1-on-1 coaching sessions",
+      "Exclusive mastermind group"
+    ],
+    "image": "/roamly/testimonial-marcus.jpg",
+    "available": false,
+    "rating": 4.8
+  },
+  {
+    "productId": 4,
+    "title": "Location Independence Blueprint",
+    "description": "Step-by-step guide to achieving complete location independence through strategic planning and execution.",
+    "price": 19700,
+    "currency": "USD",
+    "duration": "4 weeks",
+    "category": "Course",
+    "level": "Intermediate",
+    "productCategory": "product",
+    "productType": "LocationIndependenceCourse",
+    "features": [
+      "Strategic planning framework",
+      "Goal setting methodologies",
+      "Progress tracking tools",
+      "Weekly check-ins",
+      "Resource library",
+      "Peer support group"
+    ],
+    "image": "/roamly/testimonial-elena.jpg",
+    "available": false,
+    "rating": 4.6
+  }
+]

@@ -1,26 +1,240 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@theme {
+  --color-background: 202 100% 98%;
+  --color-foreground: 215 40% 15%;
+
+  --color-card: 200 50% 96%;
+  --color-card-foreground: 215 40% 15%;
+
+  --color-popover: 200 50% 96%;
+  --color-popover-foreground: 215 40% 15%;
+
+  --color-primary: 195 100% 50%;
+  --color-primary-foreground: 0 0% 100%;
+
+  --color-secondary: 200 100% 90%;
+  --color-secondary-foreground: 215 40% 15%;
+
+  --color-muted: 200 30% 92%;
+  --color-muted-foreground: 215 25% 35%;
+
+  --color-accent: 190 80% 85%;
+  --color-accent-foreground: 215 40% 15%;
+
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 210 40% 98%;
+
+  --color-border: 200 30% 88%;
+  --color-input: 200 30% 88%;
+  --color-ring: 195 100% 50%;
+
+  /* Custom Design Tokens */
+  --color-sky-light: 200 80% 40%;
+  --color-sky-medium: 195 90% 30%;
+  --color-sky-deep: 190 95% 25%;
+  --color-cloud-white: 0 0% 98%;
+
+  --radius: 0.5rem;
+
+  /* Font families */
+  --font-family-sans: 'Inter', 'system-ui', 'sans-serif';
+  --font-family-display: 'Poppins', 'system-ui', 'sans-serif';
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark mode colors */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    --color-background: 222.2 84% 4.9%;
+    --color-foreground: 210 40% 98%;
+    --color-card: 222.2 84% 4.9%;
+    --color-card-foreground: 210 40% 98%;
+    --color-popover: 222.2 84% 4.9%;
+    --color-popover-foreground: 210 40% 98%;
+    --color-primary: 210 40% 98%;
+    --color-primary-foreground: 222.2 47.4% 11.2%;
+    --color-secondary: 217.2 32.6% 17.5%;
+    --color-secondary-foreground: 210 40% 98%;
+    --color-muted: 217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
+    --color-accent: 217.2 32.6% 17.5%;
+    --color-accent-foreground: 210 40% 98%;
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input: 217.2 32.6% 17.5%;
+    --color-ring: 212.7 26.8% 83.9%;
   }
 }
 
+/* Custom CSS Properties for gradients and shadows */
+:root {
+  /* Gradients */
+  --gradient-sky: linear-gradient(135deg, hsl(200 100% 95%), hsl(195 80% 85%));
+  --gradient-watercolor: linear-gradient(45deg, hsl(195 100% 50% / 0.1), hsl(200 80% 85% / 0.2), hsl(190 90% 70% / 0.1));
+  --gradient-hero: linear-gradient(135deg, hsl(195 100% 50%), hsl(190 90% 60%));
+  
+  /* Shadows */
+  --shadow-soft: 0 4px 20px hsl(195 100% 50% / 0.15);
+  --shadow-floating: 0 8px 32px hsl(195 100% 50% / 0.2);
+  --shadow-watercolor: 0 6px 24px hsl(200 80% 85% / 0.3);
+}
+
+/* Base styles */
+* {
+  border-color: hsl(var(--color-border));
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  font-family: var(--font-family-sans);
+}
+
+/* Custom animations for the watercolor theme */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes watercolor {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  33% {
+    transform: scale(1.1) rotate(120deg);
+    opacity: 0.5;
+  }
+  66% {
+    transform: scale(0.9) rotate(240deg);
+    opacity: 0.8;
+  }
+}
+
+/* Utility classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-watercolor {
+  animation: watercolor 8s ease-in-out infinite;
+}
+
+/* Background gradients */
+.bg-gradient-sky {
+  background: var(--gradient-sky);
+}
+
+.bg-gradient-watercolor {
+  background: var(--gradient-watercolor);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+/* Shadows */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-floating {
+  box-shadow: var(--shadow-floating);
+}
+
+.shadow-watercolor {
+  box-shadow: var(--shadow-watercolor);
+}
+
+/* Typography improvements */
+.text-display {
+  font-family: var(--font-family-display);
+  font-weight: 600;
+}
+
+/* Text contrast utilities */
+.text-dark {
+  color: hsl(215 40% 15%);
+}
+
+.text-darker {
+  color: hsl(215 50% 10%);
+}
+
+.text-contrast {
+  color: hsl(215 40% 15%);
+}
+
+/* Hero text styling */
+.hero-text {
+  color: hsl(215 50% 10%);
+}
+
+.hero-subtext {
+  color: hsl(215 30% 25%);
+}
+
+/* Additional watercolor effects */
+.backdrop-blur-watercolor {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-floating);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent white on white text issues */
+.bg-white, .bg-background {
+  color: hsl(215 40% 15%);
+}
+
+.text-foreground {
+  color: hsl(215 40% 15%) !important;
+}
+
+.text-muted-foreground {
+  color: hsl(215 25% 35%) !important;
+}
+
+/* Focus styles */
+.focus-watercolor:focus {
+  outline: 2px solid hsl(var(--color-primary));
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px hsl(var(--color-primary) / 0.1);
 }
