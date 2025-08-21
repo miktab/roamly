@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 
 function EventRouterContent() {
@@ -55,6 +55,8 @@ function EventRouterContent() {
 
 export default function EventPage() {
   return (
-    <EventRouterContent />
+    <Suspense fallback={<div>Loading...</div>}>
+      <EventRouterContent />
+    </Suspense>
   )
 }

@@ -1,11 +1,22 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/auth-config"
 import { prisma } from "@/lib/prisma"
+import { Session } from "next-auth"
+
+interface SessionUser {
+  email: string;
+  id: string;
+  name?: string;
+}
+
+interface CustomSession extends Session {
+  user: SessionUser;
+}
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions) as CustomSession | null
     
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -19,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     // Get the user
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email as string }
     })
 
     if (!user) {
@@ -57,6 +68,7 @@ export async function POST(request: NextRequest) {
       data: {
         userId: user.id,
         checkoutSessionId: checkout.checkoutSessionId,
+        productCategory: checkout.productCategory,
         productType: checkout.productType,
         productId: checkout.productId,
         totalOrder: checkout.totalOrder,

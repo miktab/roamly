@@ -24,10 +24,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             'products.json'
         );
         const fileContents = await fs.readFile(filePath, 'utf-8');
-        const products = JSON.parse(fileContents);
+        const products = JSON.parse(fileContents) as Array<{ productId: number; [key: string]: unknown }>;
 
         // Find the specific product by ID
-        const product = products.find((product: any) => product.productId === parseInt(productId));
+        const product = products.find((product: { productId: number }) => product.productId === parseInt(productId));
 
         if (!product) {
             return new NextResponse(

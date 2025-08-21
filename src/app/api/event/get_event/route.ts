@@ -24,10 +24,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             'events-new.json'
         );
         const fileContents = await fs.readFile(filePath, 'utf-8');
-        const events = JSON.parse(fileContents);
+        const events = JSON.parse(fileContents) as Array<{ eventId: number; [key: string]: unknown }>;
 
         // Find the specific event by ID
-        const event = events.find((event: any) => event.eventId === parseInt(eventId));
+        const event = events.find((event: { eventId: number }) => event.eventId === parseInt(eventId));
 
         if (!event) {
             return new NextResponse(

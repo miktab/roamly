@@ -1,11 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 // import { getSiteName } from '@/utils/getSiteName';
 
-export async function GET(request: NextRequest): Promise<NextResponse> {
+interface Event {
+    gmtdatetime: string;
+    [key: string]: unknown;
+}
+
+export async function GET(): Promise<NextResponse> {
     try {
-        const domain = request.headers.get('host') || '';
         // const siteName = getSiteName(domain);
 
         // Read the events file from /public/${siteName}/events-new.json
@@ -22,7 +26,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         const currentDate = new Date();
 
         // Filter events where gmtdatetime is not older than 2 days
-        const filteredEvents = events.filter((event: any) => {
+        const filteredEvents = events.filter((event: Event) => {
             const eventDate = new Date(event.gmtdatetime);
             const twoDaysAgo = new Date(currentDate);
             twoDaysAgo.setDate(currentDate.getDate() - 2);

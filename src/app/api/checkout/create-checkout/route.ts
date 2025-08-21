@@ -160,9 +160,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
     return NextResponse.json({ url: session.url, checkoutId: checkout.checkoutId }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating checkout session:', error);
-    return NextResponse.json({ error: 'Server error occurred', details: error.message }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return NextResponse.json({ error: 'Server error occurred', details: errorMessage }, { status: 500 });
   } finally {
     await prisma.$disconnect();
   }

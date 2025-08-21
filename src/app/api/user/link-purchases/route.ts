@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/lib/auth-config'
 import { prisma } from '@/lib/prisma'
+import { Session } from 'next-auth'
+
+interface SessionUser {
+  email: string;
+  id: string;
+  name?: string;
+}
+
+interface CustomSession extends Session {
+  user: SessionUser;
+}
 
 async function linkCheckoutsToUser(userId: string, email: string) {
   try {
@@ -51,7 +62,7 @@ async function linkCheckoutsToUser(userId: string, email: string) {
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions) as CustomSession | null
     
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -96,7 +107,20 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function linkSingleCheckout(checkout: any, userId: string): Promise<number> {
+interface CheckoutData {
+  checkoutId: string;
+  checkoutSessionId: string;
+  productCategory?: string | null;
+  productType?: string | null;
+  productId: number;
+  totalOrder: number;
+  siteName: string;
+  product_description?: string | null;
+  checkoutTime: Date | string;
+  [key: string]: unknown;
+}
+
+async function linkSingleCheckout(checkout: CheckoutData, userId: string): Promise<number> {
   try {
     // Update checkout to link it to this user
     await prisma.checkout.update({

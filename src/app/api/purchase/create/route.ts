@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/lib/auth-config'
 import { prisma } from '@/lib/prisma'
+import { Session } from 'next-auth'
+
+interface SessionUser {
+  email: string;
+  id: string;
+  name?: string;
+}
+
+interface CustomSession extends Session {
+  user: SessionUser;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,7 +22,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Checkout session ID is required' }, { status: 400 })
     }
 
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions) as CustomSession | null
     
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'User must be authenticated' }, { status: 401 })
