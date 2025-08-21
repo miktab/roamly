@@ -165,7 +165,7 @@ function DigitalNomadCourseContent() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600" style={{color: '#4b5563'}}>
                   <Users className="w-5 h-5" />
-                  <span>{product.studentsEnrolled.toLocaleString()} students enrolled</span>
+                  <span>{(product.studentsEnrolled || 0).toLocaleString()} students enrolled</span>
                 </div>
               </div>
 
@@ -198,7 +198,7 @@ function DigitalNomadCourseContent() {
                 
                 {product.available && (
                   <p className="text-sm text-gray-600 text-center" style={{color: '#4b5563'}}>
-                    ✨ Join {product.studentsEnrolled.toLocaleString()}+ students already enrolled
+                    ✨ Join {(product.studentsEnrolled || 0).toLocaleString()}+ students already enrolled
                   </p>
                 )}
               </div>
@@ -240,7 +240,7 @@ function DigitalNomadCourseContent() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-gray-900">{product.studentsEnrolled.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-gray-900">{(product.studentsEnrolled || 0).toLocaleString()}</p>
               <p className="text-sm text-gray-600">Already enrolled</p>
             </CardContent>
           </Card>

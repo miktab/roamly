@@ -41,7 +41,8 @@
     ],
     "image": "/roamly/testimonial-sarah.jpg",
     "available": false,
-    "rating": 4.7
+    "rating": 4.7,
+    "studentsEnrolled": 156
   },
   {
     "productId": 3,
@@ -64,7 +65,8 @@
     ],
     "image": "/roamly/testimonial-marcus.jpg",
     "available": false,
-    "rating": 4.8
+    "rating": 4.8,
+    "studentsEnrolled": 89
   },
   {
     "productId": 4,
@@ -87,6 +89,7 @@
     ],
     "image": "/roamly/testimonial-elena.jpg",
     "available": false,
-    "rating": 4.6
+    "rating": 4.6,
+    "studentsEnrolled": 234
   }
 ]
