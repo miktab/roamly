@@ -60,18 +60,18 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Sign Up</CardTitle>
-          <CardDescription>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-400 via-sky-500 to-sky-600 p-4">
+      <Card className="w-full max-w-md shadow-2xl border-0">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-bold text-gray-900">Sign Up</CardTitle>
+          <CardDescription className="text-gray-600">
             Create a new account to get started
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">
+              <label htmlFor="name" className="text-sm font-medium text-gray-900">
                 Name
               </label>
               <Input
@@ -81,10 +81,11 @@ export default function SignUp() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">
+              <label htmlFor="email" className="text-sm font-medium text-gray-900">
                 Email
               </label>
               <Input
@@ -94,10 +95,11 @@ export default function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium">
+              <label htmlFor="password" className="text-sm font-medium text-gray-900">
                 Password
               </label>
               <Input
@@ -108,10 +110,11 @@ export default function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
+                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="confirmPassword" className="text-sm font-medium">
+              <label htmlFor="confirmPassword" className="text-sm font-medium text-gray-900">
                 Confirm Password
               </label>
               <Input
@@ -121,18 +124,23 @@ export default function SignUp() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
               />
             </div>
             {error && (
-              <div className="text-red-600 text-sm">{error}</div>
+              <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md border border-red-200">{error}</div>
             )}
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-semibold" 
+              disabled={loading}
+            >
               {loading ? "Creating account..." : "Sign Up"}
             </Button>
           </form>
-          <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
-            <Link href="/auth/signin" className="text-blue-600 hover:underline">
+          <div className="mt-6 text-center text-sm">
+            <span className="text-gray-600">Already have an account?</span>{" "}
+            <Link href="/auth/signin" className="text-sky-600 hover:text-sky-700 font-semibold hover:underline">
               Sign in
             </Link>
           </div>

@@ -26,27 +26,27 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 mb-4 leading-relaxed">
                 Roamly was born from the belief that work and travel don't have to be mutually exclusive. 
                 We've helped thousands of professionals transition to location-independent lifestyles while 
                 maintaining and growing their income.
               </p>
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 Our team consists of experienced digital nomads, entrepreneurs, and remote work specialists 
                 who understand the challenges and opportunities of the modern workforce.
               </p>
               <Link href="/events">
-                <Button variant="default" size="lg">
+                <Button variant="hero" size="lg" className="bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white">
                   Join Our Next Event
                 </Button>
               </Link>
             </div>
-            <div className="relative aspect-square rounded-lg overflow-hidden">
+            <div className="relative aspect-square rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/roamly/testimonial-sarah.jpg"
                 alt="Digital nomad working remotely"
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 <span className="text-white text-2xl">🌍</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-white">Freedom</h3>
-              <p className="text-slate-300">
+              <p className="text-slate-300 leading-relaxed">
                 We believe everyone deserves the freedom to work from anywhere and design their ideal lifestyle.
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 <span className="text-white text-2xl">💡</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-white">Innovation</h3>
-              <p className="text-slate-300">
+              <p className="text-slate-300 leading-relaxed">
                 We constantly explore new income strategies and technologies to help our community thrive.
               </p>
             </div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
                 <span className="text-white text-2xl">🤝</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-white">Community</h3>
-              <p className="text-slate-300">
+              <p className="text-slate-300 leading-relaxed">
                 We foster a supportive community where nomads share experiences and help each other succeed.
               </p>
             </div>
