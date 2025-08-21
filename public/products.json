@@ -10,13 +10,15 @@
     "level": "Beginner to Intermediate",
     "productCategory": "product",
     "productType": "RemoteReadyBootcamp",
+    "startDate": "2025-09-15T10:00:00Z",
     "features": [
       "Live interactive sessions with Real Digital Nomads",
       "Resume optimization"
     ],
     "image": "/roamly/hero-above-clouds.jpg",
     "available": true,
-    "rating": 4.9
+    "rating": 4.9,
+    "studentsEnrolled": 342
   },
   {
     "productId": 2,

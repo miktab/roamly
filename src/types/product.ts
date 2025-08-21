@@ -9,9 +9,10 @@ export interface Product {
   level: string;
   productCategory: string; // "product" or "event"
   productType: string; // unique identifier for the product type
+  startDate?: string; // Optional GMT datetime for countdown
   features: string[];
   image: string;
   available: boolean;
   rating: number;
-  studentsEnrolled: number;
+  studentsEnrolled?: number;
 }
