@@ -32,15 +32,17 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="http://localhost:3000/product?productId=1">
+              <Link href="/product/RemoteReadyBootcamp?productId=1">
                 <Button variant="hero" size="lg" className="text-lg px-8 py-6">
                   Start Your Journey
                   <ArrowRight className="ml-2" />
                 </Button>
               </Link>
-              <Button variant="cloud" size="lg" className="text-lg px-8 py-6">
-                Learn More
-              </Button>
+              <Link href="/product/RemoteReadyBootcamp?productId=1">
+                <Button variant="cloud" size="lg" className="text-lg px-8 py-6">
+                  Learn More
+                </Button>
+              </Link>
             </div>
             
             <div className="flex items-center gap-8 justify-center lg:justify-start text-darker">

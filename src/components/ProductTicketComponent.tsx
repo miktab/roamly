@@ -254,7 +254,14 @@ const ProductTicketComponent: React.FC<ProductTicketComponentProps> = ({ product
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2"
                 >
                   <CreditCard className="w-4 h-4 mr-2" />
-                  {isLoading ? 'Processing...' : `Complete Purchase - $${displayPrice}`}
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Processing...
+                    </span>
+                  ) : (
+                    `Complete Purchase - $${displayPrice}`
+                  )}
                 </Button>
               )}
             </div>

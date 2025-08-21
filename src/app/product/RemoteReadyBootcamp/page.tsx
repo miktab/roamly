@@ -4,12 +4,14 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import ProductTicketComponent from "@/components/ProductTicketComponent"
+import LoadingScreen from "@/components/LoadingScreen"
 import type { Product } from "@/types/product"
 
 export default function RemoteReadyBootcampPage() {
   const [activeTab, setActiveTab] = useState("class-info")
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
   const [isTicketComponentOpen, setIsTicketComponentOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -47,6 +49,11 @@ export default function RemoteReadyBootcampPage() {
 
   // Countdown timer effect
   useEffect(() => {
+    // Simulate loading time for better UX
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
+
     const timer = setInterval(() => {
       const now = new Date().getTime()
       const distance = startDate.getTime() - now
@@ -61,7 +68,10 @@ export default function RemoteReadyBootcampPage() {
       }
     }, 1000)
 
-    return () => clearInterval(timer)
+    return () => {
+      clearTimeout(loadingTimer)
+      clearInterval(timer)
+    }
   }, [startDate])
 
   const mentors = [
@@ -339,6 +349,10 @@ export default function RemoteReadyBootcampPage() {
       default:
         return null
     }
+  }
+
+  if (isLoading) {
+    return <LoadingScreen message="Preparing your journey to financial freedom..." />
   }
 
   return (

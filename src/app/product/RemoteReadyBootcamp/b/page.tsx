@@ -1,336 +1,291 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { Star, Users, Clock, DollarSign, CheckCircle, ArrowLeft, ShoppingCart } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import ProductTicketComponent from "@/components/ProductTicketComponent"
+import LoadingScreen from "@/components/LoadingScreen"
+import type { Product } from "@/types/product"
 
-export default function RemoteReadyBootcampPage() {
-  const [activeTab, setActiveTab] = useState("class-info")
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+async function fetchProduct(productId: number): Promise<Product> {
+  const response = await fetch(`/api/product/get_product?productId=${productId}`)
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+  const product = await response.json()
+  if (!product) throw new Error(`Product with ID ${productId} not found`)
 
-  const mentors = [
-    {
-      name: "Carlos Rodriguez",
-      location: "Barcelona, Spain",
-      expertise: "Digital Marketing & E-commerce",
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      name: "Yuki Tanaka",
-      location: "Tokyo, Japan",
-      expertise: "Software Development & Tech",
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      name: "Priya Sharma",
-      location: "Bangkok, Thailand",
-      expertise: "Content Creation & Social Media",
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      name: "Lucas Silva",
-      location: "Rio de Janeiro, Brazil",
-      expertise: "Freelancing & Remote Work Strategy",
-      image: "/placeholder.svg?height=300&width=300",
-    },
-  ]
+  return product
+}
 
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case "class-info":
-        return (
-          <div className="space-y-8">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="md:col-span-2">
-                <div className="aspect-[16/9] rounded-lg overflow-hidden bg-gray-800">
-                  <img
-                    src="/placeholder.svg?height=600&width=800"
-                    alt="Remote Ready Bootcamp - Digital Nomad Lifestyle"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+function RemoteReadyBootcampContent() {
+  const searchParams = useSearchParams()
+  const productId = parseInt(searchParams.get("productId") || "0", 10);
+  
+  const [product, setProduct] = useState<Product | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [isTicketOpen, setIsTicketOpen] = useState(false)
 
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold text-white mb-4">Program Details</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-white">Start your online business in 14 days from scratch</span>
-                    </div>
-
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-white">Online course with direct mentor access</span>
-                    </div>
-
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-white">Real digital nomad mentors (not just teachers)</span>
-                    </div>
-
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-white">Travel tips for choosing your destination</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-800 rounded-lg p-6">
-              <p className="text-yellow-400 font-semibold mb-4">TRANSFORM YOUR LIFE:</p>
-              <p className="text-gray-300 leading-relaxed mb-6">
-                Ready to break free from the 9-to-5 grind? Our intensive 14-day bootcamp will teach you everything you
-                need to become location-independent and start earning while traveling the world. Learn from real digital
-                nomads currently living and working from Spain, Thailand, Japan, and Brazil.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-white font-semibold mb-3">What You'll Master:</h4>
-                  <ul className="space-y-2 text-gray-300">
-                    <li>• Making an income online by yourself - complete independence</li>
-                    <li>• Setting up your digital product business from scratch</li>
-                    <li>• Working from anywhere in the world</li>
-                    <li>• Secret methods used by real digital nomads (insider tactics)</li>
-                    <li>• Connect with other people making money while traveling</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-white font-semibold mb-3">Program Format:</h4>
-                  <ul className="space-y-2 text-gray-300">
-                    <li>• Build multiple income streams simultaneously</li>
-                    <li>• Master the art of location scouting for nomads</li>
-                    <li>• Learn visa strategies for long-term travel</li>
-                    <li>• Network with our global community of earners</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-
-      case "mentors":
-        return (
-          <div className="space-y-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Program Put Together by These People</h3>
-              <p className="text-gray-300 max-w-3xl mx-auto">
-                Our mentors aren't just teaching theory - they're living the digital nomad lifestyle right now, earning
-                income from beautiful locations around the world and have designed this program based on their real
-                experiences.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {mentors.map((mentor, index) => (
-                <Card key={index} className="bg-gray-800 border-gray-700">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-700 flex-shrink-0">
-                        <img
-                          src={mentor.image || "/placeholder.svg"}
-                          alt={mentor.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-white font-semibold text-lg">{mentor.name}</h4>
-                        <p className="text-blue-400 text-sm mb-2">📍 Currently in {mentor.location}</p>
-                        <p className="text-gray-300 text-sm">{mentor.expertise}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="bg-gray-800 rounded-lg p-6">
-              <h4 className="text-white font-semibold mb-4">Why This Program Works</h4>
-              <div className="grid md:grid-cols-3 gap-6 text-gray-300">
-                <div>
-                  <h5 className="text-blue-400 font-medium mb-2">Created by Practitioners</h5>
-                  <p className="text-sm">
-                    Program designed by people actually living the lifestyle, not just teaching it
-                  </p>
-                </div>
-                <div>
-                  <h5 className="text-blue-400 font-medium mb-2">Proven Methods</h5>
-                  <p className="text-sm">Every strategy taught is currently being used by our mentors to earn income</p>
-                </div>
-                <div>
-                  <h5 className="text-blue-400 font-medium mb-2">Real-World Tested</h5>
-                  <p className="text-sm">All techniques have been tested across different countries and markets</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-
-      case "faq":
-        return (
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h3>
-
-            <div className="space-y-4">
-              {[
-                {
-                  q: "Do I need any prior experience to join?",
-                  a: "No prior experience required! Our bootcamp is designed for complete beginners who want to transition to remote work and start their own online business from scratch.",
-                },
-                {
-                  q: "What if I can't attend all live sessions?",
-                  a: "All sessions are recorded and available for lifetime access. You can catch up at your own pace and still get direct mentor access through our community.",
-                },
-                {
-                  q: "How quickly can I start earning after the bootcamp?",
-                  a: "Many students start generating their first income within 30-60 days of completing the program. The secret methods we teach are designed for quick implementation and results.",
-                },
-                {
-                  q: "Is there ongoing support after the 14 days?",
-                  a: "Yes! You get lifetime access to our private community of digital nomads making money while traveling, plus monthly group coaching calls with mentors.",
-                },
-                {
-                  q: "What equipment do I need?",
-                  a: "Just a laptop and reliable internet connection. We'll show you any tools or software you need during the bootcamp, plus give you travel tips for staying connected anywhere.",
-                },
-                {
-                  q: "How is this different from other online courses?",
-                  a: "Our mentors are actually living as digital nomads right now - earning money from Spain, Thailand, Japan, and Brazil. You're learning from people doing it, not just teaching it.",
-                },
-              ].map((faq, index) => (
-                <Card key={index} className="bg-gray-800 border-gray-700">
-                  <CardContent className="p-0">
-                    <button
-                      onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                      className="w-full p-6 text-left hover:bg-gray-750 transition-colors"
-                    >
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-white font-semibold">{faq.q}</h4>
-                        <svg
-                          className={`w-5 h-5 text-gray-400 transition-transform ${expandedFaq === index ? "rotate-180" : ""}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </button>
-                    {expandedFaq === index && (
-                      <div className="px-6 pb-6">
-                        <p className="text-gray-300">{faq.a}</p>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        )
-
-      default:
-        return null
+  useEffect(() => {
+    if (isNaN(productId) || !Number.isInteger(productId) || productId === 0) {
+      setError("Invalid product ID provided");
+      setLoading(false);
+      return;
     }
+
+    fetchProduct(productId)
+      .then((fetchedProduct) => {
+        // Verify this is the correct product type
+        if (fetchedProduct.productType !== "RemoteReadyBootcamp") {
+          setError("Product type mismatch");
+          setLoading(false);
+          return;
+        }
+        setProduct(fetchedProduct);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [productId]);
+
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        className={`w-5 h-5 ${
+          i < Math.floor(rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'
+        }`}
+      />
+    ));
+  };
+
+  if (loading) {
+    return <LoadingScreen message="Loading Remote Ready Bootcamp..." />
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <Link href="/products">
+            <Button>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Products
+            </Button>
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Product Not Found</h1>
+          <p className="text-gray-600 mb-4">The Remote Ready Bootcamp you're looking for doesn't exist.</p>
+          <Link href="/products">
+            <Button>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Products
+            </Button>
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-50" style={{backgroundColor: '#f9fafb', color: '#111827'}}>
       {/* Header */}
-      <div className="border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Be Remote Ready</h1>
-            <p className="text-xl text-gray-300 mb-2">Ready to earn and travel in 14 days</p>
-            <p className="text-lg text-blue-400">14-Day Intensive Bootcamp</p>
-          </div>
-
-          <div className="text-center mb-8">
-            <p className="text-lg text-yellow-400 font-semibold mb-2">🌍 Taught by Real Digital Nomads</p>
-            <p className="text-gray-300">Currently living and working from Spain • Thailand • Japan • Brazil</p>
-          </div>
-
-          {/* CTA Button */}
-          <div className="text-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold">
-              Register Now - Transform Your Life
+      <div className="bg-white border-b" style={{backgroundColor: '#ffffff'}}>
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <Link href="/products">
+            <Button variant="ghost" size="sm" className="text-gray-900 hover:text-gray-700" style={{color: '#111827'}}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Products
             </Button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Product Details */}
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Product Image */}
+          <div className="space-y-6">
+            {product.image && (
+              <div className="aspect-video rounded-lg overflow-hidden bg-gray-200">
+                <img
+                  src={"/products/RemoteReadyBootcamp/banner.jpg"}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>            )}
+          </div>
+
+          {/* Product Info */}
+          <div className="space-y-6" style={{color: '#111827'}}>
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <Badge variant="secondary">{product.category}</Badge>
+                <Badge variant="outline">{product.level}</Badge>
+                {!product.available && (
+                  <Badge className="bg-red-500 text-white">Coming Soon</Badge>
+                )}
+              </div>
+              
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style={{color: '#111827'}}>
+                {product.title}
+              </h1>
+              
+              <p className="text-lg text-gray-700 mb-6" style={{color: '#374151'}}>
+                {product.description}
+              </p>
+
+              {/* Rating and Students */}
+              <div className="flex items-center gap-6 mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="flex">{renderStars(product.rating)}</div>
+                  <span className="text-sm text-gray-600" style={{color: '#4b5563'}}>({product.rating})</span>
+                </div>
+    
+              </div>
+
+              {/* Key Details */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="flex items-center gap-3 text-gray-600" style={{color: '#4b5563'}}>
+                  <Clock className="w-5 h-5" />
+                  <span>{product.duration}</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-900 font-semibold" style={{color: '#111827'}}>
+                  <DollarSign className="w-5 h-5" />
+                  <span className="text-xl">${(product.price / 100).toFixed(2)} {product.currency}</span>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="space-y-4">
+                <Button 
+                  size="lg" 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  disabled={!product.available}
+                  onClick={() => {
+                    console.log('Button clicked, opening ticket component');
+                    setIsTicketOpen(true);
+                  }}
+                >
+                  <ShoppingCart className="w-5 h-5 mr-2" />
+                  {!product.available ? 'Coming Soon' : `Get Access for $${(product.price / 100).toFixed(2)} ${product.currency}`}
+                </Button>
+                
+      
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Navigation Tabs */}
-      <div className="border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4">
-          <nav className="flex space-x-8">
-            {[
-              { id: "class-info", label: "Class Info" },
-              { id: "mentors", label: "Your Mentors" },
-              { id: "faq", label: "FAQ" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
-                  activeTab === tab.id
-                    ? "border-white text-white"
-                    : "border-transparent text-gray-400 hover:text-gray-300"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </nav>
+        {/* Features Section */}
+        {product.features && product.features.length > 0 && (
+          <div className="mt-16">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">What You'll Get</CardTitle>
+                <CardDescription>
+                  Everything included in this {product.category.toLowerCase()}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {product.features.map((feature, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {/* Additional Info */}
+        <div className="mt-16 grid md:grid-cols-3 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                Students
+              </CardTitle>
+            </CardHeader>
+
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Star className="w-5 h-5" />
+                Rating
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-gray-900">{product.rating}/5</p>
+              <div className="flex mt-1">{renderStars(product.rating)}</div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                Duration
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-gray-900">{product.duration}</p>
+              <p className="text-sm text-gray-600">{product.level} level</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            {activeTab === "class-info" && "About this Class"}
-            {activeTab === "mentors" && "Meet Your Mentors"}
-            {activeTab === "faq" && "Questions & Answers"}
-          </h2>
-        </div>
-
-        {renderTabContent()}
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-12 pt-8 border-t border-gray-800">
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold">
-            Register Now - Start Your Journey
-          </Button>
-          <p className="text-gray-400 mt-4 text-sm">Join hundreds of students who've transformed their lives</p>
-        </div>
-      </div>
+      {/* Product Ticket Component */}
+      {product && (
+        <ProductTicketComponent
+          product={product}
+          isOpen={isTicketOpen}
+          onClose={() => {
+            console.log('Closing ticket component');
+            setIsTicketOpen(false);
+          }}
+        />
+      )}
     </div>
   )
+}
+
+function RemoteReadyBootcampPageContent() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4 text-lg text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <RemoteReadyBootcampContent />
+    </Suspense>
+  )
+}
+
+export default function RemoteReadyBootcampPage() {
+  return <RemoteReadyBootcampPageContent />
 }
