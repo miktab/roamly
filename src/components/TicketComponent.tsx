@@ -104,6 +104,17 @@ export default function TicketComponent({ event, isOpen, onClose }: TicketCompon
     }
   }
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      if (step === 1 && email.trim()) {
+        handleNext()
+      } else if (step === 2 && name.trim()) {
+        handleNext()
+      }
+    }
+  }
+
   const handleBack = () => {
     if (step > 1) {
       setStep(step - 1)
@@ -232,6 +243,7 @@ export default function TicketComponent({ event, isOpen, onClose }: TicketCompon
                     placeholder="your.email@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onKeyPress={handleKeyPress}
                     className="border-sky-200 focus:border-sky-500 focus:ring-sky-200 rounded-xl h-12 font-medium text-lg"
                   />
                 </div>
@@ -265,6 +277,7 @@ export default function TicketComponent({ event, isOpen, onClose }: TicketCompon
                     placeholder="Enter your full name" 
                     value={name} 
                     onChange={(e) => setName(e.target.value)}
+                    onKeyPress={handleKeyPress}
                     className="border-sky-200 focus:border-sky-500 focus:ring-sky-200 rounded-xl h-12 font-medium"
                   />
                 </div>

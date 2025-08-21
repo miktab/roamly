@@ -22,7 +22,9 @@ const Products = () => {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        setProducts(data);
+        // Filter to only show the Bootcamp course (productId: 1)
+        const filteredProducts = data.filter((product: Product) => product.productId === 1);
+        setProducts(filteredProducts);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
@@ -166,12 +168,7 @@ const Products = () => {
                       <span className="text-sm">{product.duration}</span>
                     </div>
                     
-                    <div className="flex items-center space-x-3 text-gray-900 font-semibold">
-                      <DollarSign className="w-4 h-4" />
-                      <span className="text-lg">
-                        ${(product.price / 100).toFixed(2)} {product.currency}
-                      </span>
-                    </div>
+                    {/* Price section removed for bootcamp course */}
 
                     {product.features && product.features.length > 0 && (
                       <div className="space-y-1">

@@ -47,6 +47,15 @@ const ProductTicketComponent: React.FC<ProductTicketComponentProps> = ({ product
     }
   }
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      if (currentStep === 1 && userInfo.name.trim() && userInfo.email.trim()) {
+        handleNext()
+      }
+    }
+  }
+
   const handlePurchase = async () => {
     setIsLoading(true)
     try {
@@ -148,6 +157,7 @@ const ProductTicketComponent: React.FC<ProductTicketComponentProps> = ({ product
                       placeholder="Enter your full name"
                       value={userInfo.name}
                       onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
+                      onKeyPress={handleKeyPress}
                       className="w-full"
                     />
                   </div>
@@ -162,6 +172,7 @@ const ProductTicketComponent: React.FC<ProductTicketComponentProps> = ({ product
                       placeholder="Enter your email address"
                       value={userInfo.email}
                       onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+                      onKeyPress={handleKeyPress}
                       className="w-full"
                     />
                   </div>

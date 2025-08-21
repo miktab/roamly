@@ -41,7 +41,7 @@ const Navigation = () => {
                 </Button>
               </Link>
             ) : (
-              <Link href="http://localhost:3000/product?productId=1">
+              <Link href="/product?productId=1">
                 <Button variant="hero" size="sm" className="text-white">
                   Get Started
                 </Button>
@@ -82,7 +82,7 @@ const Navigation = () => {
                   </Button>
                 </Link>
               ) : (
-                <Link href="http://localhost:3000/product?productId=1">
+                <Link href="/product?productId=1">
                   <Button variant="hero" size="sm" className="w-full mt-4 text-white">
                     Get Started
                   </Button>
