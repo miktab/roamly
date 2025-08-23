@@ -11,23 +11,18 @@ datasource db {
 }
 
 model customer {
-  customerId String @id @default(auto()) @map("_id") @db.ObjectId
-  email      String @unique
-  siteName   String
-  name        String?
-  age         Int?
-  isMale      Boolean?
-  city        String?
-  country     String?
-  phoneNumber String?
-  fingerprint String?
-  price       Int?
-  currency    String?
-  page        String?
-  queryData   String?
-  eventId     Int?
-  experiment  String?
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt   DateTime @default(now())
+  fingerprint String
+  page        String
+  queryData   String
+  experiment  String?
+  email       String
+  name        String
+  productId   String?
+  price       Float?
+  currency    String?  @default("USD")
+  siteName    String   @default("roamly")
 }
 
 model checkout {
@@ -62,9 +57,9 @@ model visitor {
   createdAt   DateTime @default(now())
   fingerprint String
   page        String
-  siteName    String
   queryData   String
   experiment  String?
+  siteName    String   @default("roamly")
 }
 
 // NextAuth models - simplified version
