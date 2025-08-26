@@ -67,7 +67,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const siteName = getSiteName(domain);
     
     // Get experiment from cookies
-    const experiment = getExperimentFromRequest(request);
+    const experiment = getExperimentFromRequest();
 
     stripe = new Stripe(getStripeKey(), {
       apiVersion: '2025-07-30.basil',
