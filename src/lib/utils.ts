@@ -12,7 +12,7 @@ export function getSiteName(domain: string): string {
   return domain.split('.')[0] || 'roamly'
 }
 
-export function getExperimentFromRequest(request: Request): string {
+export function getExperimentFromRequest(): string {
   // Simple implementation - you can enhance this based on your needs
   return 'default'
 }

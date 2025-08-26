@@ -1,10 +1,18 @@
-let fpPromise: Promise<any> | null = null;
+interface FingerprintJS {
+  load(): Promise<FingerprintResult>;
+}
+
+interface FingerprintResult {
+  get(): Promise<{ visitorId: string }>;
+}
+
+let fpPromise: Promise<FingerprintResult> | null = null;
 
 // Initialize FingerprintJS once
-const initFingerprint = async (): Promise<any> => {
+const initFingerprint = async (): Promise<FingerprintResult> => {
   if (!fpPromise) {
-    const fp = await import('@fingerprintjs/fingerprintjs');
-    fpPromise = fp.load();
+    const fp = await import('@fingerprintjs/fingerprintjs') as { default: FingerprintJS };
+    fpPromise = fp.default.load();
   }
   return fpPromise;
 };
