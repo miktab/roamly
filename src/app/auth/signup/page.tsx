@@ -60,8 +60,8 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-400 via-sky-500 to-sky-600 p-4">
-      <Card className="w-full max-w-md shadow-2xl border-0">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <Card className="w-full max-w-md shadow-lg border border-gray-200 bg-white">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-900">Sign Up</CardTitle>
           <CardDescription className="text-gray-600">
@@ -81,7 +81,7 @@ export default function SignUp() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
+                className="border-gray-300 focus:border-gray-500 focus:ring-gray-200 bg-white"
               />
             </div>
             <div className="space-y-2">
@@ -95,7 +95,7 @@ export default function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
+                className="border-gray-300 focus:border-gray-500 focus:ring-gray-200 bg-white"
               />
             </div>
             <div className="space-y-2">
@@ -110,7 +110,7 @@ export default function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
+                className="border-gray-300 focus:border-gray-500 focus:ring-gray-200 bg-white"
               />
             </div>
             <div className="space-y-2">
@@ -124,15 +124,15 @@ export default function SignUp() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
+                className="border-gray-300 focus:border-gray-500 focus:ring-gray-200 bg-white"
               />
             </div>
             {error && (
-              <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md border border-red-200">{error}</div>
+              <div className="text-red-700 text-sm bg-red-50 p-3 rounded-md border border-red-200">{error}</div>
             )}
             <Button 
               type="submit" 
-              className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-semibold" 
+              className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold" 
               disabled={loading}
             >
               {loading ? "Creating account..." : "Sign Up"}
@@ -140,7 +140,7 @@ export default function SignUp() {
           </form>
           <div className="mt-6 text-center text-sm">
             <span className="text-gray-600">Already have an account?</span>{" "}
-            <Link href="/auth/signin" className="text-sky-600 hover:text-sky-700 font-semibold hover:underline">
+            <Link href="/auth/signin" className="text-gray-900 hover:text-gray-700 font-semibold hover:underline">
               Sign in
             </Link>
           </div>

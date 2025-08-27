@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Star, Clock, DollarSign, CheckCircle } from "lucide-react";
 import { Product } from "@/types/product";
+import { isProductClickable, getProductButtonText } from "@/lib/product-utils";
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -35,8 +36,11 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const handleProductClick = (productId: number) => {
-    router.push(`/product?productId=${productId}`);
+  const handleProductClick = (productId: number, product: Product) => {
+    // Only navigate if the product is clickable
+    if (isProductClickable(product)) {
+      router.push(`/product?productId=${productId}`);
+    }
   };
 
   const renderStars = (rating: number) => {
@@ -117,12 +121,17 @@ const Products = () => {
           {products.map((product) => (
             <Card 
               key={product.productId} 
-              className="cursor-pointer hover:shadow-lg transition-shadow duration-200 relative overflow-hidden bg-white border border-gray-200 h-full flex flex-col"
-              onClick={() => handleProductClick(product.productId)}
+              className={`${isProductClickable(product) ? 'cursor-pointer hover:shadow-lg' : 'cursor-not-allowed opacity-75'} transition-shadow duration-200 relative overflow-hidden bg-white border border-gray-200 h-full flex flex-col`}
+              onClick={() => handleProductClick(product.productId, product)}
             >
               {!product.available && (
                 <Badge className="absolute top-4 right-4 bg-red-500 text-white">
                   Coming Soon
+                </Badge>
+              )}
+              {product.available && product.startDate && new Date() < new Date(product.startDate) && (
+                <Badge className="absolute top-4 right-4 bg-orange-500 text-white">
+                  Available Soon
                 </Badge>
               )}
               
@@ -190,13 +199,13 @@ const Products = () => {
                   
                   <Button 
                     className="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-200" 
-                    disabled={!product.available}
+                    disabled={!isProductClickable(product)}
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleProductClick(product.productId);
+                      handleProductClick(product.productId, product);
                     }}
                   >
-                    {!product.available ? 'Coming Soon' : 'Learn More'}
+                    {getProductButtonText(product)}
                   </Button>
                 </div>
               </CardContent>

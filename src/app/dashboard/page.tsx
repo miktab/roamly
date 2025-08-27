@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Star, Clock, DollarSign, CheckCircle } from "lucide-react"
+import { isProductClickable, getProductButtonText } from "@/lib/product-utils"
 
 interface Purchase {
   id: string
@@ -30,6 +31,7 @@ interface Product {
   level: string
   productCategory: string
   productType: string
+  startDate?: string
   features: string[]
   image: string
   available: boolean
@@ -86,8 +88,11 @@ export default function Dashboard() {
     }
   }
 
-  const handleProductClick = (productId: number) => {
-    router.push(`/product?productId=${productId}`)
+  const handleProductClick = (productId: number, product: any) => {
+    // Only navigate if the product is clickable
+    if (isProductClickable(product)) {
+      router.push(`/product?productId=${productId}`)
+    }
   }
 
   const renderStars = (rating: number) => {
@@ -99,6 +104,33 @@ export default function Dashboard() {
         }`}
       />
     ))
+  }
+
+  // Helper functions for purchased products
+  const isPurchasedProductAccessible = (purchase: Purchase): boolean => {
+    const product = products.find(p => p.productId === purchase.productId)
+    if (!product?.startDate) {
+      return true // No start date means accessible immediately
+    }
+    
+    const now = new Date()
+    const startDate = new Date(product.startDate)
+    return now >= startDate
+  }
+
+  const getPurchasedProductButtonText = (purchase: Purchase): string => {
+    const product = products.find(p => p.productId === purchase.productId)
+    if (!product?.startDate) {
+      return '🎯 Access'
+    }
+    
+    const now = new Date()
+    const startDate = new Date(product.startDate)
+    if (now < startDate) {
+      return `Available ${startDate.toLocaleDateString()}`
+    }
+    
+    return '🎯 Access'
   }
 
   if (status === "loading") {
@@ -166,6 +198,8 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
+            {/* Quick Actions Card - Removed */}
+            {/*
             <Card className="border-0 shadow-xl bg-gradient-to-br from-sky-500 to-cyan-500 text-white hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
@@ -193,6 +227,7 @@ export default function Dashboard() {
                 </div>
               </CardContent>
             </Card>
+            */}
 
             <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader>
@@ -280,15 +315,36 @@ export default function Dashboard() {
                             <span className="text-sm text-sky-600">Purchased</span>
                             <span className="text-sm font-medium text-emerald-600">✓ Owned</span>
                           </div>
+                          {!isPurchasedProductAccessible(purchase) && (
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                              <div className="flex items-center gap-2">
+                                <span className="text-orange-600 text-sm">⏰</span>
+                                <span className="text-orange-700 text-sm font-medium">
+                                  Starts {(() => {
+                                    const product = products.find(p => p.productId === purchase.productId)
+                                    return product?.startDate ? new Date(product.startDate).toLocaleDateString() : 'Soon'
+                                  })()}
+                                </span>
+                              </div>
+                            </div>
+                          )}
                         </div>
                         <div className="pt-4 border-t border-sky-100">
-              
                             <Button
-                              className="w-full border-sky-200 text-sky-700 hover:bg-sky-50 hover:border-sky-300 transition-all duration-200 bg-transparent"
+                              className={`w-full transition-all duration-200 ${
+                                isPurchasedProductAccessible(purchase)
+                                  ? 'border-sky-200 text-sky-700 hover:bg-sky-50 hover:border-sky-300 bg-transparent'
+                                  : 'border-gray-200 text-gray-500 bg-gray-100 cursor-not-allowed'
+                              }`}
                               variant="outline"
-                              onClick={() => router.push(`/order/${purchase.productCategory}/${purchase.productType}`)}
+                              disabled={!isPurchasedProductAccessible(purchase)}
+                              onClick={() => {
+                                if (isPurchasedProductAccessible(purchase)) {
+                                  router.push(`/order/${purchase.productCategory}/${purchase.productType}`)
+                                }
+                              }}
                             >
-                              🎯 Access
+                              {getPurchasedProductButtonText(purchase)}
                             </Button>
                         </div>
                       </CardContent>
@@ -299,7 +355,8 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          {/* Available Products Section */}
+          {/* Available Products Section - Hidden for now */}
+          {/* 
           <Card className="border border-slate-200 shadow-sm bg-slate-50/50 backdrop-blur-sm mt-8">
             <CardHeader className="border-b border-slate-200 pb-6">
               <div className="flex items-center gap-3">
@@ -333,12 +390,17 @@ export default function Dashboard() {
                       {products.filter(product => !purchases.some(purchase => purchase.productId === product.productId)).map((product) => (
                     <Card
                       key={product.productId}
-                      className="cursor-pointer hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 group border border-slate-200 shadow-none bg-white/70"
-                      onClick={() => handleProductClick(product.productId)}
+                      className={`${isProductClickable(product) ? 'cursor-pointer hover:shadow-md hover:-translate-y-0.5' : 'cursor-not-allowed opacity-75'} transition-all duration-200 group border border-slate-200 shadow-none bg-white/70`}
+                      onClick={() => handleProductClick(product.productId, product)}
                     >
                       {!product.available && (
                         <div className="absolute top-3 right-3 bg-slate-500 text-white px-2 py-1 rounded text-xs">
                           Coming Soon
+                        </div>
+                      )}
+                      {product.available && product.startDate && new Date() < new Date(product.startDate) && (
+                        <div className="absolute top-3 right-3 bg-orange-500 text-white px-2 py-1 rounded text-xs">
+                          Available Soon
                         </div>
                       )}
                       
@@ -383,13 +445,13 @@ export default function Dashboard() {
                             className="w-full border-slate-300 text-slate-600 hover:bg-slate-100 hover:border-slate-400 transition-all duration-200 bg-transparent text-sm"
                             variant="outline"
                             size="sm"
-                            disabled={!product.available}
+                            disabled={!isProductClickable(product)}
                             onClick={(e) => {
                               e.stopPropagation()
-                              handleProductClick(product.productId)
+                              handleProductClick(product.productId, product)
                             }}
                           >
-                            {product.available ? 'View Details' : 'Coming Soon'}
+                            {getProductButtonText(product)}
                           </Button>
                         </div>
                       </CardContent>
@@ -401,6 +463,7 @@ export default function Dashboard() {
               )}
             </CardContent>
           </Card>
+          */}
         </div>
       </div>
     </div>

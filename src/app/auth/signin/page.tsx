@@ -49,8 +49,8 @@ function SignInContent() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-400 via-sky-500 to-sky-600 p-4">
-      <Card className="w-full max-w-md shadow-2xl border-0">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <Card className="w-full max-w-md shadow-lg border border-gray-200 bg-white">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-900">Sign In</CardTitle>
           <CardDescription className="text-gray-600">
@@ -70,7 +70,7 @@ function SignInContent() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
+                className="border-gray-300 focus:border-gray-500 focus:ring-gray-200 bg-white"
               />
             </div>
             <div className="space-y-2">
@@ -84,18 +84,18 @@ function SignInContent() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="border-gray-300 focus:border-sky-500 focus:ring-sky-200"
+                className="border-gray-300 focus:border-gray-500 focus:ring-gray-200 bg-white"
               />
             </div>
             {message && (
-              <div className="text-green-600 text-sm bg-green-50 p-3 rounded-md border border-green-200">{message}</div>
+              <div className="text-green-700 text-sm bg-green-50 p-3 rounded-md border border-green-200">{message}</div>
             )}
             {error && (
-              <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md border border-red-200">{error}</div>
+              <div className="text-red-700 text-sm bg-red-50 p-3 rounded-md border border-red-200">{error}</div>
             )}
             <Button 
               type="submit" 
-              className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-semibold" 
+              className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold" 
               disabled={loading}
             >
               {loading ? "Signing in..." : "Sign In"}
@@ -103,7 +103,7 @@ function SignInContent() {
           </form>
           <div className="mt-6 text-center text-sm">
             <span className="text-gray-600">Don't have an account?</span>{" "}
-            <Link href="/auth/signup" className="text-sky-600 hover:text-sky-700 font-semibold hover:underline">
+            <Link href="/auth/signup" className="text-gray-900 hover:text-gray-700 font-semibold hover:underline">
               Sign up
             </Link>
           </div>
