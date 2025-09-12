@@ -1,12 +1,14 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
@@ -32,11 +34,30 @@ const Navigation = () => {
           
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/auth/signin">
-              <Button variant="hero" size="sm" className="text-white">
-                Sign In
-              </Button>
-            </Link>
+            {session ? (
+              <div className="flex items-center gap-3">
+                <Link href="/dashboard">
+                  <Button variant="hero" size="sm" className="text-white">
+                    <User className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => signOut()}
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Link href="/auth/signin">
+                <Button variant="hero" size="sm" className="text-white">
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
           
           {/* Mobile Menu Button */}
@@ -65,11 +86,30 @@ const Navigation = () => {
               <Link href="/contact" className="block text-gray-700 hover:text-primary transition-colors font-medium">
                 Contact
               </Link>
-              <Link href="/auth/signin">
-                <Button variant="hero" size="sm" className="w-full mt-4 text-white">
-                  Sign In
-                </Button>
-              </Link>
+              {session ? (
+                <div className="space-y-3 pt-2">
+                  <Link href="/dashboard">
+                    <Button variant="hero" size="sm" className="w-full text-white">
+                      <User className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => signOut()}
+                    className="w-full text-gray-700 hover:text-gray-900"
+                  >
+                    Sign Out
+                  </Button>
+                </div>
+              ) : (
+                <Link href="/auth/signin">
+                  <Button variant="hero" size="sm" className="w-full mt-4 text-white">
+                    Sign In
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}

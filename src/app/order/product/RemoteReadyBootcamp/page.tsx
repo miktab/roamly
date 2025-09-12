@@ -1,42 +1,45 @@
+'use client'
 import { CourseModule } from "@/components/course-module"
 import { CheckCircle } from "lucide-react"
+import { useEffect, useState } from 'react'
+import { fetchUserProgress } from '@/lib/progress'
 
 const modules = [
-  // Week 1: Foundation & Mindset
+  // Week 1: Foundation & Setup (Days 1-7)
   {
     id: 1,
     title: "START HERE",
     subtitle: "FOUNDATION PHASE",
     description: "Master the remote work mindset and set your success foundation",
-    progress: 100,
-    unlocked: true,
-    completed: true,
+    progress: 0,
+    unlocked: false,
+    completed: false,
   },
   {
     id: 2,
     title: "REMOTE WORK",
     subtitle: "ESSENTIALS",
     description: "Essential tools, workspace setup, and productivity systems",
-    progress: 100,
-    unlocked: true,
-    completed: true,
+    progress: 0,
+    unlocked: false,
+    completed: false,
   },
   {
     id: 3,
     title: "SKILL AUDIT &",
     subtitle: "ASSESSMENT",
     description: "Identify your strengths and marketable skills for remote work",
-    progress: 100,
-    unlocked: true,
-    completed: true,
+    progress: 0,
+    unlocked: false,
+    completed: false,
   },
   {
     id: 4,
     title: "MARKET RESEARCH",
     subtitle: "& OPPORTUNITIES",
     description: "Discover high-paying remote opportunities in your field",
-    progress: 85,
-    unlocked: true,
+    progress: 0,
+    unlocked: false,
     completed: false,
   },
   {
@@ -44,12 +47,10 @@ const modules = [
     title: "PERSONAL BRAND",
     subtitle: "FOUNDATION",
     description: "Build your professional online presence and portfolio",
-    progress: 45,
-    unlocked: true,
+    progress: 0,
+    unlocked: false,
     completed: false,
   },
-
-  // Week 2: Product & Service Development
   {
     id: 6,
     title: "CHOOSE YOUR",
@@ -68,6 +69,8 @@ const modules = [
     unlocked: false,
     completed: false,
   },
+
+  // Week 2: Launch & Scale (Days 8-14)
   {
     id: 8,
     title: "PRICING",
@@ -95,8 +98,6 @@ const modules = [
     unlocked: false,
     completed: false,
   },
-
-  // Week 3: Platform Setup & Systems
   {
     id: 11,
     title: "WEBSITE &",
@@ -133,159 +134,66 @@ const modules = [
     unlocked: false,
     completed: false,
   },
-  {
-    id: 15,
-    title: "SOCIAL MEDIA",
-    subtitle: "SETUP",
-    description: "Optimize your social profiles for maximum professional impact",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-
-  // Week 4: Marketing & Lead Generation
-  {
-    id: 16,
-    title: "CONTENT",
-    subtitle: "MARKETING MASTERY",
-    description: "Create content that positions you as an industry expert",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 17,
-    title: "LINKEDIN",
-    subtitle: "LEAD GENERATION",
-    description: "Turn LinkedIn into your personal client acquisition machine",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 18,
-    title: "INSTAGRAM",
-    subtitle: "GROWTH & SALES",
-    description: "Build an engaged Instagram following that converts to revenue",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 19,
-    title: "TWITTER/X",
-    subtitle: "AUTHORITY BUILDING",
-    description: "Establish thought leadership and attract high-value opportunities",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 20,
-    title: "NETWORKING &",
-    subtitle: "PARTNERSHIPS",
-    description: "Build strategic relationships that accelerate your success",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-
-  // Week 5: Advanced Marketing & Sales
-  {
-    id: 21,
-    title: "SALES FUNNEL",
-    subtitle: "OPTIMIZATION",
-    description: "Create high-converting sales funnels that work 24/7",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 22,
-    title: "WEBINAR &",
-    subtitle: "WORKSHOP SALES",
-    description: "Master live selling through webinars and workshops",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 23,
-    title: "AFFILIATE &",
-    subtitle: "REFERRAL SYSTEMS",
-    description: "Build systems that turn clients into your sales force",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 24,
-    title: "PAID ADVERTISING",
-    subtitle: "MASTERY",
-    description: "Scale your reach with profitable paid advertising campaigns",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 25,
-    title: "CONVERSION",
-    subtitle: "OPTIMIZATION",
-    description: "Maximize your conversion rates and revenue per visitor",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-
-  // Week 6: Scaling & Optimization
-  {
-    id: 26,
-    title: "TEAM BUILDING",
-    subtitle: "& DELEGATION",
-    description: "Scale beyond yourself by building a remote team",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 27,
-    title: "SYSTEMS &",
-    subtitle: "AUTOMATION",
-    description: "Automate your business for maximum efficiency and profit",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 28,
-    title: "ANALYTICS &",
-    subtitle: "OPTIMIZATION",
-    description: "Use data to continuously improve and scale your business",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 29,
-    title: "ADVANCED",
-    subtitle: "GROWTH STRATEGIES",
-    description: "Implement advanced tactics for exponential business growth",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
-  {
-    id: 30,
-    title: "MASTERY &",
-    subtitle: "ONGOING SUCCESS",
-    description: "Maintain momentum and continue scaling your remote empire",
-    progress: 0,
-    unlocked: false,
-    completed: false,
-  },
 ]
 
 export default function RemoteReadyBootcamp() {
+  const [userProgress, setUserProgress] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadProgress() {
+      const product = 'RemoteReadyBootcamp'
+      
+      const progress = await fetchUserProgress(product)
+      setUserProgress(progress)
+      setLoading(false)
+    }
+
+    loadProgress()
+    
+    // Refresh progress when user navigates back to the course
+    const handleFocus = () => {
+      loadProgress()
+    }
+    
+    window.addEventListener('focus', handleFocus)
+    return () => window.removeEventListener('focus', handleFocus)
+  }, [])
+
+  // Update modules based on user progress
+  const updatedModules = modules.map((module) => {
+    if (!userProgress) {
+      // For new users, only module 1 is unlocked
+      return {
+        ...module,
+        unlocked: module.id === 1,
+        completed: false,
+        progress: 0
+      }
+    }
+
+    const isUnlocked = module.id <= userProgress.currentModule
+    const isCompleted = module.id < userProgress.currentModule
+    
+    return {
+      ...module,
+      unlocked: isUnlocked,
+      completed: isCompleted,
+      progress: isCompleted ? 100 : (module.id === userProgress.currentModule ? 50 : 0)
+    }
+  })
+
+  const completedCount = userProgress ? userProgress.currentModule - 1 : 0
+  const progressPercentage = (completedCount / modules.length) * 100
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+        <div className="text-white text-xl">Loading your progress...</div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Header */}
@@ -294,16 +202,16 @@ export default function RemoteReadyBootcamp() {
         <div className="relative mx-auto max-w-7xl text-center">
           <h1 className="text-5xl font-bold text-white mb-4">Remote Ready Bootcamp</h1>
           <p className="text-xl text-emerald-100 mb-8 max-w-3xl mx-auto">
-            Transform your skills into a thriving remote business. 30 modules designed to take you from zero to
-            six-figure remote entrepreneur.
+            Transform your skills into a thriving remote business. 14 modules designed to take you from zero to
+            profitable remote entrepreneur in just 2 weeks.
           </p>
           <div className="flex items-center justify-center gap-8 text-emerald-100">
             <div className="text-center">
-              <div className="text-3xl font-bold">30</div>
+              <div className="text-3xl font-bold">14</div>
               <div className="text-sm">Modules</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">6</div>
+              <div className="text-3xl font-bold">2</div>
               <div className="text-sm">Weeks</div>
             </div>
             <div className="text-center">
@@ -323,14 +231,14 @@ export default function RemoteReadyBootcamp() {
               <p className="text-slate-400">You're making incredible progress! Keep going.</p>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-emerald-400">5/30</div>
-              <div className="text-sm text-slate-400">Modules Unlocked</div>
+              <div className="text-3xl font-bold text-emerald-400">{userProgress?.currentModule || 1}/14</div>
+              <div className="text-sm text-slate-400">Current Module</div>
             </div>
           </div>
           <div className="w-full bg-slate-700 rounded-full h-3">
             <div
               className="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full transition-all duration-500"
-              style={{ width: "16.67%" }}
+              style={{ width: `${progressPercentage}%` }}
             ></div>
           </div>
         </div>
@@ -340,8 +248,14 @@ export default function RemoteReadyBootcamp() {
       <div className="px-6 py-12">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modules.map((module) => (
-              <CourseModule key={module.id} module={module} />
+            {updatedModules.map((module) => (
+              <CourseModule 
+                key={module.id} 
+                module={module} 
+                userProgress={userProgress}
+                onProgressUpdate={setUserProgress}
+                isCurrent={userProgress && module.id === userProgress.currentModule}
+              />
             ))}
           </div>
         </div>

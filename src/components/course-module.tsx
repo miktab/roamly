@@ -14,25 +14,44 @@ interface Module {
 
 interface CourseModuleProps {
   module: Module
+  userProgress?: any
+  onProgressUpdate?: (progress: any) => void
+  isCurrent?: boolean
 }
 
-export function CourseModule({ module }: CourseModuleProps) {
+export function CourseModule({ module, userProgress, onProgressUpdate, isCurrent = false }: CourseModuleProps) {
   const { id, title, subtitle, description, progress, unlocked, completed } = module
+
+  const getModuleLink = () => {
+    // Generate the module link based on the module ID
+    return `/order/product/RemoteReadyBootcamp/module-${id}`
+  }
 
   const ModuleContent = (
     <div
       className={`relative group transition-all duration-300 ${
         unlocked ? "hover:scale-105 cursor-pointer" : "opacity-60"
-      }`}
+      } ${isCurrent ? "shadow-xl shadow-emerald-400/30" : ""}`}
     >
       {/* Module Card */}
       <div
         className={`relative overflow-hidden rounded-xl ${
           unlocked
-            ? "bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 hover:border-emerald-500/50"
+            ? isCurrent
+              ? "bg-gradient-to-br from-emerald-700 to-teal-800 shadow-lg shadow-emerald-400/50"
+              : "bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 hover:border-emerald-500/50"
             : "bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-800"
         }`}
       >
+        {/* Current Module Badge */}
+        {isCurrent && (
+          <div className="absolute top-3 right-3 z-20">
+            <div className="bg-emerald-500 text-white px-2 py-1 rounded-md text-xs font-bold shadow-lg animate-pulse">
+              CURRENT
+            </div>
+          </div>
+        )}
+
         {/* Lock Overlay for Locked Modules */}
         {!unlocked && (
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-10 flex items-center justify-center">
@@ -88,15 +107,17 @@ export function CourseModule({ module }: CourseModuleProps) {
           {/* Action Button */}
           <div className="mt-4">
             {unlocked ? (
-              <Button
-                className={`w-full ${
-                  completed
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
-                } text-white font-semibold`}
-              >
-                {completed ? "Review Module" : progress > 0 ? "Continue" : "Start Module"}
-              </Button>
+              <Link href={getModuleLink()}>
+                <Button
+                  className={`w-full ${
+                    completed
+                      ? "bg-emerald-600 hover:bg-emerald-700"
+                      : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+                  } text-white font-semibold`}
+                >
+                  {completed ? "Review Module" : progress > 0 ? "Continue" : "Start Module"}
+                </Button>
+              </Link>
             ) : (
               <Button disabled className="w-full bg-slate-700 text-slate-400 cursor-not-allowed">
                 Locked
@@ -108,13 +129,17 @@ export function CourseModule({ module }: CourseModuleProps) {
 
       {/* Premium Glow Effect for Unlocked Modules */}
       {unlocked && (
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
+        <div className={`absolute inset-0 rounded-xl ${
+          isCurrent 
+            ? "bg-gradient-to-r from-emerald-400/30 to-teal-400/30 opacity-75 group-hover:opacity-100" 
+            : "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100"
+        } transition-opacity duration-300 -z-10 blur-xl`}></div>
       )}
     </div>
   )
 
   return unlocked ? (
-    <Link href={`/order/product/RemoteReadyBootcamp/module-${id}`}>
+    <Link href={getModuleLink()}>
       {ModuleContent}
     </Link>
   ) : (
