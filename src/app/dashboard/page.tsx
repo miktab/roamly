@@ -6,7 +6,8 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Star, Clock, DollarSign, CheckCircle } from "lucide-react"
-import { isProductClickable, getProductButtonText } from "@/lib/product-utils"
+import { isProductClickable, getProductButtonText, shouldShowCountdown } from "@/lib/product-utils"
+import CountdownBar from "@/components/CountdownBar"
 
 interface Purchase {
   id: string
@@ -309,17 +310,31 @@ export default function Dashboard() {
                             <span className="text-sm font-medium text-emerald-600">✓ Owned</span>
                           </div>
                           {!isPurchasedProductAccessible(purchase) && (
-                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
-                              <div className="flex items-center gap-2">
-                                <span className="text-orange-600 text-sm">⏰</span>
-                                <span className="text-orange-700 text-sm font-medium">
-                                  Starts {(() => {
-                                    const product = products.find(p => p.productId === purchase.productId)
-                                    return product?.startDate ? new Date(product.startDate).toLocaleDateString() : 'Soon'
-                                  })()}
-                                </span>
+                            <>
+                              <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-orange-600 text-sm">⏰</span>
+                                  <span className="text-orange-700 text-sm font-medium">
+                                    Starts {(() => {
+                                      const product = products.find(p => p.productId === purchase.productId)
+                                      return product?.startDate ? new Date(product.startDate).toLocaleDateString() : 'Soon'
+                                    })()}
+                                  </span>
+                                </div>
                               </div>
-                            </div>
+                              {(() => {
+                                const product = products.find(p => p.productId === purchase.productId)
+                                if (product?.startDate && shouldShowCountdown(product)) {
+                                  return (
+                                    <CountdownBar 
+                                      startDate={product.startDate} 
+                                      title={product.title}
+                                    />
+                                  )
+                                }
+                                return null
+                              })()}
+                            </>
                           )}
                         </div>
                         <div className="pt-4 border-t border-sky-100">
