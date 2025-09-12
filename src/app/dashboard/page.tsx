@@ -165,13 +165,6 @@ export default function Dashboard() {
               </h1>
               <p className="text-sky-700/80 text-lg">Your journey to financial freedom starts here</p>
             </div>
-            <Button
-              onClick={() => signOut({ callbackUrl: "/" })}
-              variant="outline"
-              className="border-sky-200 text-sky-700 hover:bg-sky-50 hover:border-sky-300 transition-all duration-200"
-            >
-              Sign Out
-            </Button>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
@@ -464,6 +457,17 @@ export default function Dashboard() {
             </CardContent>
           </Card>
           */}
+        </div>
+
+        {/* Discreet Sign Out Button at Bottom */}
+        <div className="flex justify-center pt-12 pb-8">
+          <Button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            variant="ghost"
+            className="text-sm text-sky-600/70 hover:text-sky-700 hover:bg-sky-50/50 transition-all duration-200"
+          >
+            Sign Out
+          </Button>
         </div>
       </div>
     </div>

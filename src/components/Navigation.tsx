@@ -35,22 +35,12 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             {session ? (
-              <div className="flex items-center gap-3">
-                <Link href="/dashboard">
-                  <Button variant="hero" size="sm" className="text-white">
-                    <User className="w-4 h-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={() => signOut()}
-                  className="text-gray-700 hover:text-gray-900"
-                >
-                  Sign Out
+              <Link href="/dashboard">
+                <Button variant="hero" size="sm" className="text-white">
+                  <User className="w-4 h-4 mr-2" />
+                  Dashboard
                 </Button>
-              </div>
+              </Link>
             ) : (
               <Link href="/auth/signin">
                 <Button variant="hero" size="sm" className="text-white">
@@ -87,22 +77,12 @@ const Navigation = () => {
                 Contact
               </Link>
               {session ? (
-                <div className="space-y-3 pt-2">
-                  <Link href="/dashboard">
-                    <Button variant="hero" size="sm" className="w-full text-white">
-                      <User className="w-4 h-4 mr-2" />
-                      Dashboard
-                    </Button>
-                  </Link>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={() => signOut()}
-                    className="w-full text-gray-700 hover:text-gray-900"
-                  >
-                    Sign Out
+                <Link href="/dashboard">
+                  <Button variant="hero" size="sm" className="w-full text-white">
+                    <User className="w-4 h-4 mr-2" />
+                    Dashboard
                   </Button>
-                </div>
+                </Link>
               ) : (
                 <Link href="/auth/signin">
                   <Button variant="hero" size="sm" className="w-full mt-4 text-white">
