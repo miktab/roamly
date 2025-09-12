@@ -1,4 +1,4 @@
-import { Lock, CheckCircle, Play, Clock } from "lucide-react"
+import { Lock, CheckCircle, Play, Clock, Video, Users, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -10,6 +10,7 @@ interface Module {
   progress: number
   unlocked: boolean
   completed: boolean
+  specialIcon?: 'video' | 'group' | 'star'
 }
 
 interface CourseModuleProps {
@@ -59,6 +60,27 @@ export function CourseModule({ module, userProgress, onProgressUpdate, isCurrent
               <Lock className="w-8 h-8 text-slate-400 mx-auto mb-2" />
               <p className="text-sm text-slate-400 font-medium">Complete previous modules</p>
             </div>
+          </div>
+        )}
+
+        {/* Special Icon for Locked Modules */}
+        {!unlocked && module.specialIcon && (
+          <div className="absolute top-3 left-3 z-20">
+            {module.specialIcon === 'video' && (
+              <div className="bg-blue-500/80 backdrop-blur-sm text-white p-2 rounded-lg shadow-lg">
+                <Video className="w-4 h-4" />
+              </div>
+            )}
+            {module.specialIcon === 'group' && (
+              <div className="bg-purple-500/80 backdrop-blur-sm text-white p-2 rounded-lg shadow-lg">
+                <Users className="w-4 h-4" />
+              </div>
+            )}
+            {module.specialIcon === 'star' && (
+              <div className="bg-yellow-500/80 backdrop-blur-sm text-white p-2 rounded-lg shadow-lg">
+                <Star className="w-4 h-4" />
+              </div>
+            )}
           </div>
         )}
 

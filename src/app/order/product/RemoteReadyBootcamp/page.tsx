@@ -41,6 +41,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'video' as const,
   },
   {
     id: 5,
@@ -50,6 +51,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'group' as const,
   },
   {
     id: 6,
@@ -68,6 +70,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'star' as const,
   },
 
   // Week 2: Launch & Scale (Days 8-14)
@@ -79,6 +82,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'video' as const,
   },
   {
     id: 9,
@@ -97,6 +101,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'group' as const,
   },
   {
     id: 11,
@@ -115,6 +120,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'video' as const,
   },
   {
     id: 13,
@@ -133,6 +139,7 @@ const modules = [
     progress: 0,
     unlocked: false,
     completed: false,
+    specialIcon: 'star' as const,
   },
 ]
 
