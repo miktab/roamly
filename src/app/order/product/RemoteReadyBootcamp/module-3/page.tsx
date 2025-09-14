@@ -123,10 +123,11 @@ export default function Module3() {
               </div>
               <div>
                 <div className="text-emerald-100 text-sm">Module 3</div>
-                <h1 className="text-3xl font-bold text-white">SKILL AUDIT & ASSESSMENT</h1>
+                <h1 className="text-3xl font-bold text-white">THE ENGINE PHASE</h1>
+                <h2 className="text-2xl font-semibold text-emerald-100 mt-2">The Offer & The First Dollar</h2>
               </div>
             </div>
-            <p className="text-emerald-100 text-lg">Identify your strengths and marketable skills for remote work</p>
+            <p className="text-emerald-100 text-lg">Turn your validated problem into your first paying customer - before you build anything</p>
           </div>
 
           {/* Content */}
@@ -134,27 +135,96 @@ export default function Module3() {
             <h2 className="text-2xl font-bold text-white mb-6">Module Content</h2>
             <div className="prose prose-invert max-w-none">
               <p className="text-slate-300 leading-relaxed mb-4">
-                This module focuses on identify your strengths and marketable skills for remote work. You'll learn practical strategies, tools, and techniques that successful remote workers use to excel in this area. The content includes step-by-step guides, real-world examples, and actionable frameworks you can implement immediately.
+                Welcome back. If you're watching this, it means you did the work. You stepped into the arena. You took a fuzzy idea, sharpened it into a hypothesis, and shared it with the community.
               </p>
+              
+              <p className="text-slate-300 leading-relaxed mb-6">
+                A hypothesis is not a business. A business is an exchange of value for money. In Module 2, we found a painful problem. In this module, we're going to do the single most important thing in your entrepreneurial journey: <strong className="text-emerald-400">get your first dollar</strong> for solving that problem... before you build anything.
+              </p>
+
+              <div className="bg-red-900/30 rounded-lg p-6 mb-8 border border-red-500/30">
+                <h3 className="text-xl font-bold text-red-400 mb-4">🧠 The Builder's Trap</h3>
+                <p className="text-slate-300 mb-3">Here is the predictable, tragic path of 99% of aspiring entrepreneurs:</p>
+                <ul className="space-y-2 text-slate-300 ml-4">
+                  <li>• They get an idea and get excited</li>
+                  <li>• They retreat into "The Builder's Trap"</li>
+                  <li>• They spend months building the perfect product in isolation</li>
+                  <li>• They finally launch to... crickets. Silence.</li>
+                </ul>
+                <p className="text-emerald-400 font-semibold mt-4">Our mantra: Sell first, build second.</p>
+              </div>
+
+              <div className="bg-slate-700/30 rounded-lg p-6 mb-8">
+                <h3 className="text-xl font-bold text-emerald-400 mb-4">🎯 The Core Concept</h3>
+                <p className="text-slate-300 mb-4">
+                  You are not selling a "product" or "course." You are selling a <strong>transformation</strong> - a bridge from their current painful reality (Point A) to their desired future (Point B).
+                </p>
+                <p className="text-slate-300">
+                  Your first offer is a <strong className="text-emerald-400">Concierge Service</strong> - a high-touch "Founding Member" program where you personally walk your first few clients across the bridge.
+                </p>
+              </div>
+
+              <div className="bg-slate-700/30 rounded-lg p-6 mb-8">
+                <h3 className="text-xl font-bold text-white mb-4">Your Irresistible Offer Stack</h3>
+                <div className="space-y-4">
+                  <div className="border-l-4 border-emerald-500 pl-4">
+                    <h4 className="text-emerald-400 font-semibold">Layer 1: The Core Promise (The Outcome)</h4>
+                    <p className="text-slate-300 text-sm">The specific transformation you'll deliver</p>
+                  </div>
+                  <div className="border-l-4 border-teal-500 pl-4">
+                    <h4 className="text-teal-400 font-semibold">Layer 2: The Delivery Mechanism (The "How")</h4>
+                    <p className="text-slate-300 text-sm">High-touch, personal delivery methods</p>
+                  </div>
+                  <div className="border-l-4 border-cyan-500 pl-4">
+                    <h4 className="text-cyan-400 font-semibold">Layer 3: Risk Reversal & Bonuses</h4>
+                    <p className="text-slate-300 text-sm">Guarantees and bonuses that eliminate fear</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-slate-700/30 rounded-lg p-6 mb-8">
+                <h3 className="text-xl font-bold text-white mb-4">🔍 Finding "Patient Zero"</h3>
+                <p className="text-slate-300 mb-4">You need one person to say yes - your first case study. Two approaches:</p>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-emerald-400 font-semibold mb-2">1. Warm Outreach (The "Feedback" Method)</h4>
+                    <p className="text-slate-300 text-sm">Ask friends/colleagues who fit your audience for "feedback" on your idea</p>
+                  </div>
+                  <div>
+                    <h4 className="text-teal-400 font-semibold mb-2">2. Cold Outreach (The "Digital Detective" Method)</h4>
+                    <p className="text-slate-300 text-sm">Find people who posted about your problem in forums/groups</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-emerald-900/30 rounded-lg p-6 mb-8 border border-emerald-500/30">
+                <h3 className="text-xl font-bold text-emerald-400 mb-4">💰 The Moment of Truth - Making the Ask</h3>
+                <p className="text-slate-300 mb-4">
+                  Listen 80% of the time. Dig deep into their pain. Then make your offer with confidence.
+                </p>
+                <p className="text-emerald-400 font-semibold">
+                  Price range: $200-$500 for founding members. High enough for validation, low enough for impulse buy.
+                </p>
+              </div>
               
               <div className="bg-slate-700/30 rounded-lg p-6 mt-8">
                 <h3 className="text-xl font-bold text-white mb-4">⚡ Key Learning Objectives</h3>
                 <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start gap-3">
                     <span className="text-emerald-400 text-sm mt-1">•</span>
-                    <span>Master the fundamentals of identify your strengths and marketable skills for remote work</span>
+                    <span>Avoid "The Builder's Trap" by selling before building</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-emerald-400 text-sm mt-1">•</span>
-                    <span>Implement proven strategies and best practices</span>
+                    <span>Craft an irresistible 3-layer offer stack</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-emerald-400 text-sm mt-1">•</span>
-                    <span>Apply practical tools and techniques</span>
+                    <span>Master warm and cold outreach strategies</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-emerald-400 text-sm mt-1">•</span>
-                    <span>Create actionable plans for immediate implementation</span>
+                    <span>Get your first paying customer or valuable market feedback</span>
                   </li>
                 </ul>
               </div>
@@ -174,17 +244,42 @@ export default function Module3() {
               <span className="text-emerald-400 font-semibold">{isCompleted ? "100%" : "0%"}</span>
             </div>
             <p className="text-slate-400 mt-2">
-              {isCompleted ? "Module completed! You can now access the next module." : "Complete this module to unlock the next one."}
+              {isCompleted ? "Module completed! You got your first dollar and validated your offer. Time to deliver!" : "Get your first paying customer or valuable market feedback to complete this module."}
             </p>
           </div>
 
           {/* Complete Module Button */}
           {!isCompleted && (
             <div className="bg-gradient-to-r from-emerald-900/40 to-teal-900/40 rounded-lg p-6 mb-8 border border-emerald-500/30 text-center">
-              <h3 className="text-xl font-bold text-emerald-400 mb-4">Ready to Continue?</h3>
-              <p className="text-slate-300 mb-6">
-                Once you've completed the learning objectives above, click the button below to mark this module as complete and unlock the next module.
-              </p>
+              <h3 className="text-xl font-bold text-emerald-400 mb-4">📝 Your Assignment: Get Your First Dollar</h3>
+              <div className="text-left max-w-3xl mx-auto">
+                <p className="text-slate-300 mb-6">
+                  Your mission is to get your first "yes" or your first "no." Both are incredibly valuable.
+                </p>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-slate-800/50 rounded-lg p-4">
+                    <h4 className="text-emerald-400 font-semibold mb-2">Step 1: Build Your Irresistible Offer Stack</h4>
+                    <p className="text-slate-300 text-sm">Write out your 3-layer offer: Core Promise, Delivery Mechanism, and Risk Reversal/Bonuses</p>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4">
+                    <h4 className="text-emerald-400 font-semibold mb-2">Step 2: Create Your "Patient Zero" Hit List</h4>
+                    <p className="text-slate-300 text-sm">Identify 5 real people you can contact with their names and contact methods</p>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4">
+                    <h4 className="text-emerald-400 font-semibold mb-2">Step 3: Initiate Contact</h4>
+                    <p className="text-slate-300 text-sm">Reach out to at least 3 people this week. Goal: book one call</p>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4">
+                    <h4 className="text-emerald-400 font-semibold mb-2">Step 4: Have the Conversation & Make the Ask</h4>
+                    <p className="text-slate-300 text-sm">Listen 80%, understand their pain, then clearly state your offer and price</p>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4">
+                    <h4 className="text-emerald-400 font-semibold mb-2">Step 5: Post Your Result</h4>
+                    <p className="text-slate-300 text-sm">Share your success or learnings in the WhatsApp community</p>
+                  </div>
+                </div>
+              </div>
               <Button 
                 onClick={handleCompleteModule}
                 disabled={isUpdating}

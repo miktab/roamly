@@ -95,7 +95,7 @@ export default function Module2() {
               </Link>
             </div>
           </div>
-        </div>
+        </div>  
       </div>
     )
   }
