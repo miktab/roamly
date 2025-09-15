@@ -20,8 +20,30 @@
     "rating": 4.9,
     "studentsEnrolled": 342
   },
-  {
+    {
     "productId": 2,
+    "title": "Be Remote Ready",
+    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
+    "price": 2500,
+    "currency": "USD",
+    "duration": "14 days",
+    "category": "Bootcamp",
+    "level": "Beginner to Intermediate",
+    "productCategory": "product",
+    "productType": "RemoteReadyBootcamp",
+    "startDate":"2025-09-28T22:00:00Z",
+    "features": [
+      "Live interactive sessions with Real Digital Nomads",
+      "Resume optimization"
+    ],
+    "image": "/roamly/hero-above-clouds.jpg",
+    "available": true,
+    "rating": 4.9,
+    "studentsEnrolled": 342
+  },
+
+  {
+    "productId": 12,
     "title": "Digital Nomad Starter Pack",
     "description": "Everything you need to start your digital nomad journey, including legal frameworks, tax optimization, and location scouting.",
     "price": 29700,
@@ -45,7 +67,7 @@
     "studentsEnrolled": 156
   },
   {
-    "productId": 3,
+    "productId": 13,
     "title": "Remote Income Mastery",
     "description": "Advanced strategies for creating multiple income streams while traveling. Perfect for experienced remote workers looking to scale.",
     "price": 79700,
@@ -69,7 +91,7 @@
     "studentsEnrolled": 89
   },
   {
-    "productId": 4,
+    "productId": 14,
     "title": "Location Independence Blueprint",
     "description": "Step-by-step guide to achieving complete location independence through strategic planning and execution.",
     "price": 19700,
