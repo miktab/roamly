@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import ProductTicketComponent from "@/components/ProductTicketComponent"
@@ -8,11 +9,13 @@ import LoadingScreen from "@/components/LoadingScreen"
 import type { Product } from "@/types/product"
 
 export default function RemoteReadyBootcampPage() {
+  const searchParams = useSearchParams()
   const [activeTab, setActiveTab] = useState("class-info")
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
   const [isTicketComponentOpen, setIsTicketComponentOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [product, setProduct] = useState<Product | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -26,9 +29,26 @@ export default function RemoteReadyBootcampPage() {
       try {
         const response = await fetch('/products.json')
         const products: Product[] = await response.json()
-        const remoteReadyBootcamp = products.find(p => p.productId === 1)
+        
+        // Get productId from URL parameters, fallback to 1 if not provided
+        const productIdFromUrl = searchParams.get('productId')
+        const targetProductId = productIdFromUrl ? parseInt(productIdFromUrl, 10) : 1
+        
+        // Find the product with the specified ID and ensure it's a RemoteReadyBootcamp
+        const remoteReadyBootcamp = products.find(p => 
+          p.productId === targetProductId && 
+          p.productType === "RemoteReadyBootcamp"
+        )
+        
         if (remoteReadyBootcamp) {
           setProduct(remoteReadyBootcamp)
+          setError(null)
+        } else {
+          // If the specific product isn't found or isn't a RemoteReadyBootcamp, show error or fallback
+          const errorMessage = `Product with ID ${targetProductId} not found or is not a RemoteReadyBootcamp`
+          console.error(errorMessage)
+          setError(errorMessage)
+          setProduct(null)
         }
       } catch (error) {
         console.error('Failed to fetch product data:', error)
@@ -36,7 +56,7 @@ export default function RemoteReadyBootcampPage() {
     }
     
     fetchProduct()
-  }, [])
+  }, [searchParams])
 
   // Loading effect - separate from countdown
   useEffect(() => {
@@ -318,8 +338,27 @@ export default function RemoteReadyBootcampPage() {
     }
   }
 
-  if (isLoading || !product) {
+  if (isLoading) {
     return <LoadingScreen message="Preparing your journey to financial freedom..." />
+  }
+
+  if (error || !product) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
+          <p className="text-gray-300 mb-4">
+            {error || "The requested RemoteReadyBootcamp product could not be found."}
+          </p>
+          <Button 
+            onClick={() => window.location.href = '/products'}
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            View All Products
+          </Button>
+        </div>
+      </div>
+    )
   }
 
   return (
