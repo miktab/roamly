@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,7 +8,7 @@ import ProductTicketComponent from "@/components/ProductTicketComponent"
 import LoadingScreen from "@/components/LoadingScreen"
 import type { Product } from "@/types/product"
 
-export default function RemoteReadyBootcampPage() {
+function RemoteReadyBootcampContent() {
   const searchParams = useSearchParams()
   const [activeTab, setActiveTab] = useState("class-info")
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
@@ -474,5 +474,13 @@ export default function RemoteReadyBootcampPage() {
         onClose={() => setIsTicketComponentOpen(false)}
       />
     </div>
+  )
+}
+
+export default function RemoteReadyBootcampPage() {
+  return (
+    <Suspense fallback={<LoadingScreen message="Loading product information..." />}>
+      <RemoteReadyBootcampContent />
+    </Suspense>
   )
 }
