@@ -138,7 +138,7 @@
     "level": "Beginner to Intermediate",
     "productCategory": "product",
     "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-30T23:00:00Z",
+    "startDate":"2025-12-06T23:00:00Z",
     "features": [
       "Live interactive sessions with Real Digital Nomads",
       "Resume optimization"
@@ -159,7 +159,7 @@
     "level": "Beginner to Intermediate",
     "productCategory": "product",
     "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-30T23:00:00Z",
+    "startDate":"2025-12-13T20:00:00Z",
     "features": [
       "Live interactive sessions with Real Digital Nomads",
       "Resume optimization"
@@ -169,49 +169,7 @@
     "rating": 4.9,
     "studentsEnrolled": 342
   },
-         {
-    "productId": 9,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-30T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-         {
-    "productId": 10,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-30T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-
+    
 {
   "productId": 1000,
   "title": "Start Your AI Business for Passive Income",
