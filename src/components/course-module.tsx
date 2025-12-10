@@ -18,14 +18,15 @@ interface CourseModuleProps {
   userProgress?: any
   onProgressUpdate?: (progress: any) => void
   isCurrent?: boolean
+  productName?: string
 }
 
-export function CourseModule({ module, userProgress, onProgressUpdate, isCurrent = false }: CourseModuleProps) {
+export function CourseModule({ module, userProgress, onProgressUpdate, isCurrent = false, productName = 'RemoteReadyBootcamp' }: CourseModuleProps) {
   const { id, title, subtitle, description, progress, unlocked, completed } = module
 
   const getModuleLink = () => {
-    // Generate the module link based on the module ID
-    return `/order/product/RemoteReadyBootcamp/module-${id}`
+    // Generate the module link based on the module ID and product name
+    return `/order/product/${productName}/module-${id}`
   }
 
   const ModuleContent = (

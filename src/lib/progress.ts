@@ -1,5 +1,4 @@
 // Progress utility functions
-import { getCurrentUser } from '@/lib/auth'
 
 export async function fetchUserProgress(product: string) {
   try {

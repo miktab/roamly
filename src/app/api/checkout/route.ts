@@ -30,27 +30,39 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!product.available) {
+    if ((product as any).soldOut) {
       return NextResponse.json(
         { error: 'Product is not available for purchase' },
         { status: 400 }
       );
     }
 
-        // Create the checkout session with the create-checkout API
+    // Generate product name from productType if title doesn't exist
+    const productNameMap: Record<string, string> = {
+      'RemoteReadyBootcamp': 'Remote Ready Bootcamp',
+      'AiDigitalCourse': 'AI Digital Products Course',
+      'AiContentChallenge': 'AI Challenge'
+    };
+    
+    const productName = (product as any).title || productNameMap[(product as any).productType] || `Product #${product.productId}`;
+    
+    // Generate productCategory from productType if not available (default to 'event')
+    const productCategory = 'product';
+
+    // Create the checkout session with the create-checkout API
     const checkoutResponse = await fetch(`${request.nextUrl.origin}/api/checkout/create-checkout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        productId: product.productId,
-        productCategory: product.productCategory,
+        productId: product.productId, 
+        productCategory: productCategory,
         productType: product.productType,
         items: [{
           price: product.price, // Price is already in cents from products.json
           quantity: 1,
-          name: product.title
+          name: productName
         }],
         currency: product.currency || 'USD',
         email,

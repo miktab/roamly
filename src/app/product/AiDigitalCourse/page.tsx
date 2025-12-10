@@ -181,33 +181,70 @@ function RemoteReadyBootcampContent() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <p className="text-yellow-400 font-semibold mb-4">TRANSFORM YOUR LIFE:</p>
+              <p className="text-yellow-400 font-semibold mb-4">BUILD DIGITAL PRODUCTS WITH AI:</p>
               <p className="text-gray-300 leading-relaxed mb-6">
-                Ready to break free from the 9-to-5 grind? Our 14-day bootcamp will teach you everything you
-                need to become location-independent and start earning while traveling the world. <span className="text-blue-400 font-semibold">Just 25 minutes a day</span> - no need to quit your job yet! Learn from real digital
-                nomads currently living and working from 🇪🇸 Spain, 🇹🇭 Thailand, 🇯🇵 Japan, and 🇧🇷 Brazil.
+                Everything you need to build a digital product with AI and sell it to make money. I'll walk you through 2 real examples of digital products I've built using AI. You'll see the entire process from developing it with AI to branding and selling it - all within <span className="text-blue-400 font-semibold">14 days</span>.
               </p>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-white font-semibold mb-3">What You'll Master:</h4>
+                  <h4 className="text-white font-semibold mb-3">What You'll Learn:</h4>
                   <ul className="space-y-2 text-gray-300">
-                    <li>• Making an income online by yourself - complete independence</li>
-                    <li>• Setting up your digital product business from scratch</li>
-                    <li>• Working from anywhere in the world</li>
-                    <li>• Secret methods used by real digital nomads (insider tactics)</li>
-                    <li>• Connect with other people making money while traveling</li>
+                    <li>• How I built an AI tool to find undervalued/sell second-hand cars on Facebook Marketplace</li>
+                    <li>• How I created an AI app to clip videos automatically</li>
+                    <li>• Step-by-step lessons to build your own digital product</li>
+                    <li>• AI tools & techniques for non-coders to build real businesses</li>
+                    <li>• Branding and selling strategies that work</li>
                   </ul>
                 </div>
 
                 <div>
-                  <h4 className="text-white font-semibold mb-3">Program Format:</h4>
+                  <h4 className="text-white font-semibold mb-3">Program Includes:</h4>
                   <ul className="space-y-2 text-gray-300">
-                    <li>• Build multiple income streams simultaneously</li>
-                    <li>• Master the art of location scouting for nomads</li>
-                    <li>• Learn visa strategies for long-term travel</li>
-                    <li>• Network with our global community of earners</li>
+                    <li>• Real case studies of 2 successful products I built</li>
+                    <li>• Best AI tools recommended for each step</li>
+                    <li>• No coding experience required</li>
+                    <li>• Create passive income from your digital products</li>
+                    <li>• Apply these lessons to build exactly what you're interested in</li>
                   </ul>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="text-center">
+                  <div className="rounded-lg overflow-hidden bg-gray-700 mb-4">
+                    <img
+                      src="/products/AiDigitalCourse/1.jpg"
+                      alt="Find Challenge"
+                      className="w-full h-40 object-cover"
+                    />
+                  </div>
+                  <h4 className="text-white font-semibold">Find Challenge</h4>
+                  <p className="text-gray-400 text-sm mt-2">Identify the market opportunity and problem to solve</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="rounded-lg overflow-hidden bg-gray-700 mb-4">
+                    <img
+                      src="/products/AiDigitalCourse/2.jpg"
+                      alt="Create Product"
+                      className="w-full h-40 object-cover"
+                    />
+                  </div>
+                  <h4 className="text-white font-semibold">Create Product</h4>
+                  <p className="text-gray-400 text-sm mt-2">Build your digital product using AI tools and techniques</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="rounded-lg overflow-hidden bg-gray-700 mb-4">
+                    <img
+                      src="/products/AiDigitalCourse/3.jpg"
+                      alt="Monetise & Sell"
+                      className="w-full h-40 object-cover"
+                    />
+                  </div>
+                  <h4 className="text-white font-semibold">Monetise & Sell</h4>
+                  <p className="text-gray-400 text-sm mt-2">Launch and sell your product to generate revenue</p>
                 </div>
               </div>
             </div>
@@ -218,11 +255,9 @@ function RemoteReadyBootcampContent() {
         return (
           <div className="space-y-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Program Put Together by Real Nomads</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">Learn from AI Builders</h3>
               <p className="text-gray-300 max-w-3xl mx-auto">
-                Our mentors aren't just teaching theory - they're living the digital nomad lifestyle right now, earning
-                income from beautiful locations around the world and have designed this program based on their real
-                experiences.
+                Our mentors have built successful digital products using AI. They're sharing their proven strategies, tools, and real case studies to help you create your own profitable AI-powered digital products.
               </p>
             </div>
 
@@ -253,18 +288,18 @@ function RemoteReadyBootcampContent() {
               <h4 className="text-white font-semibold mb-4">Why This Program Works</h4>
               <div className="grid md:grid-cols-3 gap-6 text-gray-300">
                 <div>
-                  <h5 className="text-blue-400 font-medium mb-2">Created by Practitioners</h5>
+                  <h5 className="text-blue-400 font-medium mb-2">Real Case Studies</h5>
                   <p className="text-sm">
-                    Program designed by people actually living the lifestyle, not just teaching it
+                    Learn from 2 actual digital products built with AI - see the complete journey from idea to implementation
                   </p>
                 </div>
                 <div>
-                  <h5 className="text-blue-400 font-medium mb-2">Proven Methods</h5>
-                  <p className="text-sm">Every strategy taught is currently being used by our mentors to earn income</p>
+                  <h5 className="text-blue-400 font-medium mb-2">Practical Tools & Tactics</h5>
+                  <p className="text-sm">Discover the specific AI tools and strategies used to build these products</p>
                 </div>
                 <div>
-                  <h5 className="text-blue-400 font-medium mb-2">Real-World Tested</h5>
-                  <p className="text-sm">All techniques have been tested across different countries and markets</p>
+                  <h5 className="text-blue-400 font-medium mb-2">No Coding Required</h5>
+                  <p className="text-sm">AI empowers anyone to build and launch products, regardless of technical background</p>
                 </div>
               </div>
             </div>
@@ -279,28 +314,28 @@ function RemoteReadyBootcampContent() {
             <div className="space-y-4">
               {[
                 {
-                  q: "Do I need any prior experience to join?",
-                  a: "No prior experience required! Our bootcamp is designed for complete beginners who want to transition to remote work and start their own online business from scratch.",
+                  q: "Do I need coding experience?",
+                  a: "Not at all! AI tools make it possible to build digital products without any coding knowledge. We'll teach you which tools to use and how to use them effectively.",
                 },
                 {
-                  q: "What if I can't attend all live sessions?",
-                  a: "All sessions are recorded and available for lifetime access. You can catch up at your own pace and still get direct mentor access through our community.",
+                  q: "What digital products will I learn to build?",
+                  a: "You'll learn the real case studies of my AI tool for finding undervalued cars on Facebook Marketplace and my AI video clipping app. You'll understand the process so you can apply it to build products in your own areas of interest.",
                 },
                 {
-                  q: "How quickly can I start earning after the bootcamp?",
-                  a: "Many students start generating their first income within 30-60 days of completing the program. The secret methods we teach are designed for quick implementation and results.",
+                  q: "How long does it take to build a product?",
+                  a: "Our bootcamp shows you how to move fast. You'll see how I built real products and get results within the 14-day period. After the bootcamp, you have all the tools and knowledge to keep building.",
                 },
                 {
-                  q: "Is there ongoing support after the 14 days?",
-                  a: "Yes! You get lifetime access to our private community of digital nomads making money while traveling, plus monthly group coaching calls with mentors.",
+                  q: "Will I get the AI tools recommended in the course?",
+                  a: "We recommend the best AI tools available for each step of the process. Many have free or trial versions so you can start immediately. We provide detailed guides for each tool.",
                 },
                 {
-                  q: "What equipment do I need?",
-                  a: "Just a laptop and reliable internet connection. We'll show you any tools or software you need during the bootcamp, plus give you travel tips for staying connected anywhere.",
+                  q: "Can I build something completely different?",
+                  a: "Absolutely! The principles you learn from the case studies apply to any digital product. Learn the process, then apply it to what you're passionate about.",
                 },
                 {
-                  q: "How is this different from other online courses?",
-                  a: "Our mentors are actually living as digital nomads right now - earning money from Spain, Thailand, Japan, and Brazil. You're learning from people doing it, not just teaching it.",
+                  q: "Is there support after the bootcamp ends?",
+                  a: "Yes! You get lifetime access to our community of AI product builders, monthly group coaching calls, and resources to keep building your products.",
                 },
               ].map((faq, index) => (
                 <Card key={index} className="bg-gray-800 border-gray-700">
@@ -369,12 +404,12 @@ function RemoteReadyBootcampContent() {
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">{product.title}</h1>
             <p className="text-xl text-blue-100 mb-2">{product.description}</p>
-            <p className="text-lg text-sky-200 font-semibold">14-Day Online Bootcamp • Only 25 Minutes Daily</p>
+            <p className="text-lg text-sky-200 font-semibold">14-Day Online Bootcamp • Build Real Products with AI</p>
           </div>
 
           <div className="text-center mb-8">
-            <p className="text-lg text-yellow-300 font-semibold mb-2">🌍 Taught by Real Digital Nomads</p>
-            <p className="text-blue-100">Currently living and working from 🇪🇸 Spain • 🇹🇭 Thailand • 🇯🇵 Japan • 🇧🇷 Brazil</p>
+            <p className="text-lg text-yellow-300 font-semibold mb-2">🤖 AI-Powered Digital Product Creation</p>
+            <p className="text-blue-100">No coding experience required • Learn from real case studies • Build passive income</p>
           </div>
 
           {/* CTA Button */}
@@ -463,7 +498,7 @@ function RemoteReadyBootcampContent() {
           >
             Register Now
           </Button>
-          <p className="text-gray-400 mt-4 text-sm">Join hundreds of students who've transformed their lives</p>
+          <p className="text-gray-400 mt-4 text-sm">Join students building profitable AI digital products</p>
         </div>
       </div>
 

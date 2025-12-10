@@ -141,15 +141,7 @@ export default function Module1() {
                 <p className="text-slate-300 leading-relaxed mb-6">
                   My name is Tom. I wasn't born an entrepreneur, and I'm not a trust-fund traveler. My story started on the path you're told to want.
                 </p>
-                
-                <div className="bg-slate-700/30 rounded-lg p-4 mb-6 text-center">
-                  <img 
-                    src="/products/RemoteReadyBootcamp/module-1/stanford.jpg" 
-                    alt="A younger Tom at Stanford University" 
-                    className="w-full max-w-md mx-auto rounded-lg mb-2"
-                  />
-                  {/* <p className="text-slate-400 text-sm">[Image: Tom in a modern, collaborative office space, clearly a high-level tech company like Google or Atlassian]</p> */}
-                </div>
+
                 
                 <p className="text-slate-300 leading-relaxed mb-6">
                   I walked the well trodden path, with the university degree followed by a career deep in the heart of the tech world. I was building someone else's dream, very effectively, and getting paid well to do it.

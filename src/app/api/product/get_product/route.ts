@@ -17,17 +17,26 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             );
         }
 
-        // Read the products file from /public/products.json
-        const filePath = path.join(
+        // Read both products.json and catalog.json
+        const productsPath = path.join(
             process.cwd(),
             'public',
             'products.json'
         );
-        const fileContents = await fs.readFile(filePath, 'utf-8');
-        const products = JSON.parse(fileContents) as Array<{ productId: number; [key: string]: unknown }>;
+        const catalogPath = path.join(
+            process.cwd(),
+            'public',
+            'catalog.json'
+        );
 
-        // Find the specific product by ID
-        const product = products.find((product: { productId: number }) => product.productId === parseInt(productId));
+        const productsContent = await fs.readFile(productsPath, 'utf-8');
+        const catalogContent = await fs.readFile(catalogPath, 'utf-8');
+
+        const products = JSON.parse(productsContent) as Array<{ productId: number; [key: string]: unknown }>;
+        const catalog = JSON.parse(catalogContent) as { [key: string]: { [key: string]: unknown } };
+
+        // Find the product by ID
+        const product = products.find((p: { productId: number }) => p.productId === parseInt(productId));
 
         if (!product) {
             return new NextResponse(
@@ -39,8 +48,17 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             );
         }
 
-        // Return the product
-        return new NextResponse(JSON.stringify(product), {
+        // Merge with catalog data using productType
+        const productType = product.productType as string;
+        const catalogData = catalog[productType] || {};
+
+        const mergedProduct = {
+            ...product,
+            ...catalogData,
+        };
+
+        // Return the merged product
+        return new NextResponse(JSON.stringify(mergedProduct), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
         });
