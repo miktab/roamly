@@ -1,0 +1,50 @@
+{
+  "RemoteReadyBootcamp": {
+    "title": "Be Remote Ready",
+    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
+    "image": "/roamly/hero-above-clouds.jpg",
+    "features": [
+      "Live interactive sessions with Real Digital Nomads",
+      "Resume optimization",
+      "Global locations available"
+    ],
+    "rating": 4.9,
+    "studentsEnrolled": 342,
+    "category": "Bootcamp",
+    "level": "Beginner to Intermediate",
+    "productCategory": "event"
+  },
+  "AiDigitalCourse": {
+    "title": "Start Your AI Business for Passive Income",
+    "description": "Blueprint for launching your AI-powered online business. This digital course takes you through proven frameworks to automate income streams, create AI-based products, and build your business, all from anywhere in the world.",
+    "image": "/roamly/ai-business.jpg",
+    "features": [
+      "7-day step-by-step AI business launch blueprint",
+      "Access to automation and AI tools tutorials",
+      "Guides for creating and monetizing digital assets",
+      "Join an exclusive community of ambitious learners"
+    ],
+    "rating": 4.9,
+    "studentsEnrolled": 342,
+    "category": "Online Course",
+    "level": "Beginner to Intermediate",
+    "productCategory": "event"
+  },
+  "AiChallenge": {
+    "title": "30 Day AI Content Challenge",
+    "description": "Build a Content Empire Without Being on Camera. This digital challenge walks you step-by-step through tools, techniques, and strategies to build a content brand, grow your audience, and monetize your creativity using AI automation.",
+    "image": "/roamly/content-challenge.jpg",
+    "features": [
+      "30-day guided challenge to master AI video content creation",
+      "Daily lessons, assignments, and prompts for hands-on learning",
+      "Learn to use top AI tools for video scripting, voice, and editing",
+      "Discover content monetization models and growth tactics",
+      "Join a community of creators building profitable AI content brands"
+    ],
+    "rating": 4.8,
+    "studentsEnrolled": 287,
+    "category": "Online Course",
+    "level": "Beginner to Intermediate",
+    "productCategory": "event"
+  }
+}

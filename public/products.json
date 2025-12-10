@@ -1,292 +1,128 @@
 [
-  {
-    "productId": 1,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-09-12T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
     {
-    "productId": 2,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-09-28T22:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-
-      {
-    "productId": 3,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-10-18T22:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-      {
-    "productId": 4,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-09T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-      {
-    "productId": 5,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-23T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-      {
-    "productId": 6,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-11-30T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-
-        {
-    "productId": 7,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-12-06T23:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-        {
-    "productId": 8,
-    "title": "Be Remote Ready",
-    "description": "Ready to earn and travel in 14 days - 14 day Bootcamp taught by Real Digital Nomads in Spain, Thailand, Japan, Brazil.",
-    "price": 2500,
-    "currency": "USD",
-    "duration": "14 days",
-    "category": "Bootcamp",
-    "level": "Beginner to Intermediate",
-    "productCategory": "product",
-    "productType": "RemoteReadyBootcamp",
-    "startDate":"2025-12-13T20:00:00Z",
-    "features": [
-      "Live interactive sessions with Real Digital Nomads",
-      "Resume optimization"
-    ],
-    "image": "/roamly/hero-above-clouds.jpg",
-    "available": true,
-    "rating": 4.9,
-    "studentsEnrolled": 342
-  },
-    
-{
-  "productId": 1000,
-  "title": "Start Your AI Business for Passive Income",
-  "description": "Blueprint for launching your AI-powered online business in 7 days. This digital course takes you through proven frameworks to automate income streams, create AI-based products, and build your business, all from anywhere in the world.",
-  "price": 2500,
-  "currency": "USD",
-  "duration": "7 days",
-  "category": "Online Course",
-  "level": "Beginner to Intermediate",
-  "productCategory": "product",
-  "productType": "AiDigitalCourse",
-  "startDate": "2025-11-29T23:00:00Z",
-  "features": [
-    "7-day step-by-step AI business launch blueprint",
-    "Access to automation and AI tools tutorials",
-    "Guides for creating and monetizing digital assets",
-    "Join an exclusive community of ambitious learners building AI businesses together"
-  ],
-  "image": "/roamly/ai-business.jpg",
-  "available": true,
-  "rating": 4.9,
-  "studentsEnrolled": 342
-},
-{
-  "productId": 1001,
-  "title": "30 Day AI Content Challenge",
-  "description": "Start making money creating AI-powered video content in just 30 days. This digital challenge walks you step-by-step through tools, techniques, and strategies to build a content brand, grow your audience, and monetize your creativity using AI automation.",
-  "price": 1500,
-  "currency": "USD",
-  "duration": "30 days",
-  "category": "Online Course",
-  "level": "Beginner to Intermediate",
-  "productCategory": "product",
-  "productType": "AiContentChallenge",
-  "startDate": "2025-11-29T20:00:00Z",
-  "features": [
-    "30-day guided challenge to master AI video content creation",
-    "Daily lessons, assignments, and prompts for hands-on learning",
-    "Learn to use top AI tools for video scripting, voice, and editing",
-    "Discover content monetization models and growth tactics",
-    "Join a community of creators building profitable AI content brands"
-  ],
-  "image": "/roamly/content-challenge.jpg",
-  "available": true,
-  "rating": 4.8,
-  "studentsEnrolled": 287
-},
-  {
-    "productId": 12,
-    "title": "Digital Nomad Starter Pack",
-    "description": "Everything you need to start your digital nomad journey, including legal frameworks, tax optimization, and location scouting.",
-    "price": 29700,
-    "currency": "USD",
-    "duration": "Self-paced",
-    "category": "Course",
-    "level": "Beginner",
-    "productCategory": "product",
-    "productType": "DigitalNomadCourse",
-    "features": [
-      "Legal framework setup",
-      "Tax optimization strategies",
-      "Location scouting guide",
-      "Banking and finance abroad",
-      "Health insurance guidance",
-      "Community access"
-    ],
-    "image": "/roamly/testimonial-sarah.jpg",
-    "available": false,
-    "rating": 4.7,
-    "studentsEnrolled": 156
-  },
-  {
-    "productId": 13,
-    "title": "Remote Income Mastery",
-    "description": "Advanced strategies for creating multiple income streams while traveling. Perfect for experienced remote workers looking to scale.",
-    "price": 79700,
-    "currency": "USD",
-    "duration": "6 weeks",
-    "category": "Masterclass",
-    "level": "Advanced",
-    "productCategory": "product",
-    "productType": "IncomeStreamMasterclass",
-    "features": [
-      "Multiple income stream strategies",
-      "Investment opportunities",
-      "Passive income creation",
-      "Business automation",
-      "1-on-1 coaching sessions",
-      "Exclusive mastermind group"
-    ],
-    "image": "/roamly/testimonial-marcus.jpg",
-    "available": false,
-    "rating": 4.8,
-    "studentsEnrolled": 89
-  },
-  {
-    "productId": 14,
-    "title": "Location Independence Blueprint",
-    "description": "Step-by-step guide to achieving complete location independence through strategic planning and execution.",
-    "price": 19700,
-    "currency": "USD",
-    "duration": "4 weeks",
-    "category": "Course",
-    "level": "Intermediate",
-    "productCategory": "product",
-    "productType": "LocationIndependenceCourse",
-    "features": [
-      "Strategic planning framework",
-      "Goal setting methodologies",
-      "Progress tracking tools",
-      "Weekly check-ins",
-      "Resource library",
-      "Peer support group"
-    ],
-    "image": "/roamly/testimonial-elena.jpg",
-    "available": false,
-    "rating": 4.6,
-    "studentsEnrolled": 234
-  }
+        "productId": 3,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-10-18T22:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 4,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-11-09T23:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 5,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-11-23T23:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 6,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-11-30T23:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 7,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-06T23:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 8,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-13T20:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 9,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-20T23:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 10,
+        "price": 2500,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-28T20:00:00Z",
+        "siteName": "roamly",
+        "productType": "RemoteReadyBootcamp"
+    },
+    {
+        "productId": 101,
+        "price": 3400,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-07T20:00:00Z",
+        "siteName": "roamly",
+        "productType": "AiDigitalCourse"
+    },
+    {
+        "productId": 102,
+        "price": 3400,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-14T19:00:00Z",
+        "siteName": "roamly",
+        "productType": "AiDigitalCourse"
+    },
+    {
+        "productId": 103,
+        "price": 3400,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-20T20:00:00Z",
+        "siteName": "roamly",
+        "productType": "AiDigitalCourse"
+    },
+    {
+        "productId": 104,
+        "price": 3400,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-27T19:00:00Z",
+        "siteName": "roamly",
+        "productType": "AiDigitalCourse"
+    },
+    {
+        "productId": 201,
+        "price": 4900,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-06T20:00:00Z",
+        "siteName": "roamly",
+        "productType": "AiContentChallenge"
+    },
+    {
+        "productId": 202,
+        "price": 4900,
+        "currency": "USD",
+        "soldOut": false,
+        "gmtdatetime": "2025-12-13T19:00:00Z",
+        "siteName": "roamly",
+        "productType": "AiContentChallenge"
+    }
 ]

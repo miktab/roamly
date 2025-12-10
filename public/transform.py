@@ -5,9 +5,16 @@ from time import sleep
 from random import uniform
 import math
 
-def get_sheet_data_and_convert_to_json(output_json_path="events.json", max_retries=3, sheet_id="1DKRL7HTK2DNcyMTo6ItvXDvZIem4Vls6hIvnqHfNY8E"):
+def convert_nan_to_none(value):
+    """Convert NaN values to None for proper JSON serialization."""
+    if pd.isna(value):
+        return None
+    return value
+
+def get_sheet_data_and_convert_to_json(output_json_path="products.json", max_retries=3, sheet_id="1DcQ_5OJ1cfdo6IMvZUPmZCKSLeYri3aDviQzg1gwOgY"):
     """
     Fetches data from Google Sheet, filters valid rows, and converts to JSON format.
+    Outputs a simple products.json with only: productId, price, currency, soldOut, gmtdatetime, siteName, productType
     
     Args:
         output_json_path: Path to save the output JSON file
@@ -35,24 +42,20 @@ def get_sheet_data_and_convert_to_json(output_json_path="events.json", max_retri
             # Read the CSV data from the response content
             df = pd.read_csv(pd.io.common.StringIO(response.text))
 
-            # Define the required fields based on your JSON structure
+            # Define the required fields
             required_fields = [
-                "eventId", "gmtdatetime", "title", "country", "city", "timezone", 
-                "price_male", "price_female", "days_before_event", "currency", 
-                "duration_in_minutes", "soldOut", "eventType", "zoomInvite"
+                "productId", "gmtdatetime", "price", "currency", "soldOut", "siteName", "productType"
             ]
             
-            # Filter out rows with missing eventId or any required fields
+            # Filter out rows with missing productId or from non-roamly sites
             valid_rows = []
             for _, row in df.iterrows():
-                # Check if eventId is valid (not NaN)
-                if pd.isna(row.get("eventId")):
+                # Check if productId is valid (not NaN)
+                if pd.isna(row.get("productId")):
                     continue
-                if row.get("siteName") !='roamly':
+                if row.get("siteName") != 'roamly':
                     continue
                 print(row)
-                # Check if all required fields exist
-                # if all(field in row and not pd.isna(row[field]) for field in required_fields):
                 valid_rows.append(row.to_dict())
             
             print(f"Filtered {len(valid_rows)} valid rows from {len(df)} total rows")
@@ -60,23 +63,17 @@ def get_sheet_data_and_convert_to_json(output_json_path="events.json", max_retri
             # Convert valid rows to the desired JSON format
             json_data = []
             for row in valid_rows:
-                if not row['eventId']:
+                if not row.get('productId'):
                     continue
-                print(row)
                 try:
                     json_obj = {
-                        "eventId": int(row["eventId"]),
-                        "gmtdatetime": row["gmtdatetime"],
-                        "title": row.get("title"),
-                        "country": row["country"] if not pd.isna(row.get("country")) else None,
-                        "city": row["city"] if not pd.isna(row.get("city")) else None,
-                        "timezone": row["timezone"],
-                        "price": int(float(row["price_male"])) if not pd.isna(row.get("price_male")) else 1000,
-                        "currency": row["currency"],
-                        "duration_in_minutes": int(float(row["duration_in_minutes"])),
-                        "soldOut": str(row["soldOut"]).lower() == "true",
-                        "eventType": row["eventType"],
-                        "zoomInvite": row["zoomInvite"]
+                        "productId": int(row["productId"]),
+                        "price": int(float(row.get("price", 0))) if not pd.isna(row.get("price")) else 0,
+                        "currency": convert_nan_to_none(row.get("currency")),
+                        "soldOut": str(row.get("soldOut", "false")).lower() == "true",
+                        "gmtdatetime": convert_nan_to_none(row.get("gmtdatetime")),
+                        "siteName": convert_nan_to_none(row.get("siteName")),
+                        "productType": convert_nan_to_none(row.get("productType"))
                     }
                     json_data.append(json_obj)
                 except (ValueError, TypeError) as e:
@@ -108,9 +105,9 @@ def get_sheet_data_and_convert_to_json(output_json_path="events.json", max_retri
 
 # Example usage
 if __name__ == "__main__":
-    data = get_sheet_data_and_convert_to_json(output_json_path="events-new.json")
+    data = get_sheet_data_and_convert_to_json(output_json_path="products.json")
     
     if data:
-        print(f"Successfully converted {len(data)} events to JSON")
+        print(f"Successfully converted {len(data)} products to JSON")
     else:
         print("Failed to process data")
